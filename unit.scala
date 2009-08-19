@@ -28,13 +28,13 @@ case class   Air(val quantity: Int) extends Element
 case class Light(val quantity: Int) extends Element
 
 trait ElementTrait[T]{
-  val create: Int => T
-  lazy val Large = create(100)
+  val create: Int => T         // abstract value
+  lazy val Large = create(100) // lazy value
   lazy val Small = create(25)
 }
 
 object Earth extends ElementTrait[Earth]{
-  override val create = Earth(_)
+  override val create = Earth(_) // type constructor
 }
 object Water extends ElementTrait[Water]{
   override val create = Water(_)
