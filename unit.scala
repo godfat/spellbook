@@ -71,11 +71,11 @@ abstract class Terrain(   name: String,
       this(name, elements, Property(), Property())
 }
 
-class   Road extends Terrain(  "Road", Nil)
-class Forest extends Terrain("Forest", List(Earth.Small, Earth.Small))
-class  River extends Terrain( "River", List(Water.Small, Water.Small))
-class   Lava extends Terrain(  "Lava", List( Fire.Small,  Fire.Small))
-class Plains extends Terrain("Plains", List(  Air.Small,   Air.Small))
+case class   Road() extends Terrain(  "Road", Nil)
+case class Forest() extends Terrain("Forest", List(Earth.Small, Earth.Small))
+case class  River() extends Terrain( "River", List(Water.Small, Water.Small))
+case class   Lava() extends Terrain(  "Lava", List( Fire.Small,  Fire.Small))
+case class Plains() extends Terrain("Plains", List(  Air.Small,   Air.Small))
 
 val Footman = new Unit( "Footman",
                         List(Fire.Large),
