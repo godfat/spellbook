@@ -49,22 +49,33 @@ object   Air extends ElementTrait[Air]{
 type Property = SortedMap[String, Int]
 val  Property =   TreeMap[String, Int] _
 
-case class Unit(    name: String,
-                elememts: List[Element],
-                property: Property,
-                   state: Property)
+abstract class Unit(    name: String,
+                    elememts: List[Element],
+                    property: Property,
+                       state: Property) // primary constructor
+{
+  def this(name: String, elememts: List[Element], property: Property) =
+      this(name, elememts, property, property)
+}
+
+case class Creature(     name: String,
+                     elememts: List[Element],
+                     property: Property,
+                        state: Property)
+     extends Unit(name, elememts, property, state)
 {
   def this(name: String, elememts: List[Element], property: Property) =
       this(name, elememts, property, property)
 
-  def hp_reduce(n: Int): Unit =
-    Unit(name, elememts, property,
-         state.update("hp", state("hp") - n))
+  def hp_reduce(n: Int): Creature =
+    Creature(name, elememts, property,
+             state.update("hp", state("hp") - n))
 }
-abstract class Terrain(   name: String,
-                      elememts: List[Element],
-                      property: Property,
-                         state: Property)
+
+abstract class Terrain(     name: String,
+                        elememts: List[Element],
+                        property: Property,
+                           state: Property)
          extends Unit(name, elememts, property, state)
 {
   def this(name: String, elements: List[Element]) =
@@ -77,10 +88,10 @@ case class  River() extends Terrain( "River", List(Water.Small, Water.Small))
 case class   Lava() extends Terrain(  "Lava", List( Fire.Small,  Fire.Small))
 case class Plains() extends Terrain("Plains", List(  Air.Small,   Air.Small))
 
-val Footman = new Unit( "Footman",
-                        List(Fire.Large),
-                        Property("hp" -> 200,
-                                 "mp" -> 40))
+val Footman = new Creature( "Footman",
+                            List(Fire.Large),
+                            Property("hp" -> 200,
+                                     "mp" -> 40))
 
 println(Fire.Large(Water.Small))
 println(Footman)
