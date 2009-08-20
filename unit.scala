@@ -11,10 +11,29 @@ abstract class Buff
 case class Enrage() extends Buff
 
 abstract class Element{
+  val pt: Int
+
   def apply(e: Element): Effect = (this, e) match{
-    case (Fire(p0),  Fire(p1)) => absorb(p0, p1)
-    case (Fire(p0), Water(p1)) => weaken(p0, p1)
-    case _                     => ampify( 0,  0)
+    case (e0: Earth, e1: Earth) => absorb(e0.pt, e1.pt)
+    case (e0: Water, e1: Water) => absorb(e0.pt, e1.pt)
+    case (e0: Fire,  e1:  Fire) => absorb(e0.pt, e1.pt)
+    case (e0:  Air,  e1:   Air) => absorb(e0.pt, e1.pt)
+
+    case (e0: Earth, e1: Water) => ampify(e0.pt, e1.pt)
+    case (e0: Water, e1:  Fire) => ampify(e0.pt, e1.pt)
+    case (e0:  Fire, e1:   Air) => ampify(e0.pt, e1.pt)
+    case (e0:   Air, e1: Earth) => ampify(e0.pt, e1.pt)
+
+    case (e0: Earth, e1:   Air) => weaken(e0.pt, e1.pt)
+    case (e0: Water, e1: Earth) => weaken(e0.pt, e1.pt)
+    case (e0:  Fire, e1: Water) => weaken(e0.pt, e1.pt)
+    case (e0:   Air, e1:  Fire) => weaken(e0.pt, e1.pt)
+
+    case (e0: Light, e1: Light) => absorb(e0.pt, e1.pt)
+    case (e0: Light,         _) => ampify(e0.pt,  e.pt)
+    case (        _, e1: Light) => ampify(   pt, e1.pt)
+
+    case _                      => ampify( 0,  0)
   }
 
   def absorb(p0: Int, p1: Int) = Absorb(+(p0 + p1))
