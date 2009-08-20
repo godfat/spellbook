@@ -15,10 +15,14 @@ case class Enrage() extends Buff
 
 abstract class Element{
   def apply(e: Element): Effect = (this, e) match{
-    case (Fire(q0),  Fire(q1)) => Absorb(+(q0 + q1))
-    case (Fire(q0), Water(q1)) => Ampify(-(q0 + q1))
-    case _                     => Ampify(0)
+    case (Fire(q0),  Fire(q1)) => absorb(q0, q1)
+    case (Fire(q0), Water(q1)) => weaken(q0, q1)
+    case _                     => ampify( 0,  0)
   }
+
+  def absorb(q0: Int, q1: Int) = Absorb(+(q0 + q1))
+  def ampify(q0: Int, q1: Int) = Ampify(+(q0 + q1))
+  def weaken(q0: Int, q1: Int) = Ampify(-(q0 + q1))
 }
 
 case class Earth(val quantity: Int) extends Element
