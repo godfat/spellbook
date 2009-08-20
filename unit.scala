@@ -38,16 +38,16 @@ trait ElementTrait[T]{
 }
 
 object Earth extends ElementTrait[Earth]{
-  override val create = Earth(_) // type constructor
+  val create = Earth(_) // type constructor
 }
 object Water extends ElementTrait[Water]{
-  override val create = Water(_)
+  val create = Water(_)
 }
 object  Fire extends ElementTrait[Fire]{
-  override val create = Fire(_)
+  val create = Fire(_)
 }
 object   Air extends ElementTrait[Air]{
-  override val create = Air(_)
+  val create = Air(_)
 }
 
 abstract class Property{
