@@ -73,7 +73,7 @@ case class Creature(     name: String,
 
   def hp_reduce(n: Int): Creature =
     Creature(name, elememts, property,
-             state.update("hp", state("hp") - n))
+             state.update("Health", state("Health") - n))
 }
 
 abstract class Terrain(     name: String,
@@ -94,12 +94,20 @@ case class Plains() extends Terrain("Plains", List(  Air.Small,   Air.Small))
 
 val Footman = new Creature( "Footman",
                             List(Fire.Large),
-                            Property("hp" -> 200,
-                                     "mp" -> 40))
+                            Property("Health"      -> 100, // hp
+                                     "Mana"        ->  50, // mp
+                                     "Energy"      ->  50, // resource
+                                     "Vigor"       ->  50, // action point
+                                     "Strength"    ->  50, // p-atk
+                                     "Endurance"   ->  25, // p-def
+                                     "Imagination" ->  10, // m-atk
+                                     "Will"        ->  10, // m-def,
+                                     "Agility"     ->  15)) // decides speed in vm
 
 println(Fire.Large(Water.Small))
 println(Footman)
 println(Footman.hp_reduce(10))
+// println(Footman - Health(10))
 
 // abstract class Action
 // case class   Move extends Action
