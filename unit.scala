@@ -146,11 +146,11 @@ case class  River() extends Terrain( "River", List(Water.Small, Water.Small))
 case class   Lava() extends Terrain(  "Lava", List( Fire.Small,  Fire.Small))
 case class Plains() extends Terrain("Plains", List(  Air.Small,   Air.Small))
 
-val Footman = new Unit( "Footman",
-                        List(Fire.Large),
-                        State(Health(100), Mana(10), Energy(50), Vigor(50),
-                              Strength(40), Constitution(20), Imagination(10), Will(10),
-                              Agility(15)))
+val Footman = Unit( "Footman",
+                    List(Fire.Large),
+                    State(Health(100), Mana(10), Energy(50), Vigor(50),
+                          Strength(40), Constitution(20), Imagination(10), Will(10),
+                          Agility(15)))
 
 println(Fire.Large(Water.Small))
 println(Footman)
