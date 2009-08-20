@@ -50,24 +50,39 @@ object   Air extends ElementTrait[Air]{
   val create = Air(_)
 }
 
-abstract class Property{
+sealed abstract class Property[T <: Property[T]]{
   val pt: Int
+  val create: Int => T
 
-  def +(p: Property): Int = pt + p.pt
-  def +(i: Int):      Int = pt + i
-
-  def -(p: Property): Int = pt - p.pt
-  def -(i: Int):      Int = pt - i
+  def +(p: T): T = create(pt + p.pt)
+  def -(p: T): T = create(pt - p.pt)
 }
-case class      Health(val pt: Int) extends Property // hp
-case class        Mana(val pt: Int) extends Property // mp
-case class      Energy(val pt: Int) extends Property // resource
-case class       Vigor(val pt: Int) extends Property // action point
-case class    Strength(val pt: Int) extends Property // p-atk
-case class   Endurance(val pt: Int) extends Property // p-def
-case class Imagination(val pt: Int) extends Property // m-atk
-case class        Will(val pt: Int) extends Property // m-def
-case class     Agility(val pt: Int) extends Property // decides speed in vm
+case class      Health(val pt: Int) extends Property[Health]      // hp
+{ val create = Health(_) }
+
+case class        Mana(val pt: Int) extends Property[Mana]        // mp
+{ val create = Mana(_) }
+
+case class      Energy(val pt: Int) extends Property[Energy]      // resource
+{ val create = Energy(_) }
+
+case class       Vigor(val pt: Int) extends Property[Vigor]       // action point
+{ val create = Vigor(_) }
+
+case class    Strength(val pt: Int) extends Property[Strength]    // p-atk
+{ val create = Strength(_) }
+
+case class   Endurance(val pt: Int) extends Property[Endurance]   // p-def
+{ val create = Endurance(_) }
+
+case class Imagination(val pt: Int) extends Property[Imagination] // m-atk
+{ val create = Imagination(_) }
+
+case class        Will(val pt: Int) extends Property[Will]        // m-def
+{ val create = Will(_) }
+
+case class     Agility(val pt: Int) extends Property[Agility]     // decides speed in vm
+{ val create = Agility(_) }
 
 case class State( val health: Health, val mana: Mana, val energy: Energy, val vigor: Vigor,
                   val strength: Strength, val endurance: Endurance,
@@ -80,19 +95,28 @@ case class State( val health: Health, val mana: Mana, val energy: Energy, val vi
                       strength, endurance, imagination, will,
                       agility)
 {
-  def +(property: Property): State = apply((_: Property) + (_: Int), property)
-  def -(property: Property): State = apply((_: Property) - (_: Int), property)
+  def +[T <: Property[T]](property: T): State = property match{
+    case h:      Health => State(_1 + h, _2, _3, _4, _5, _6, _7, _8, _9)
+    case m:        Mana => State(_1, _2 + m, _3, _4, _5, _6, _7, _8, _9)
+    case e:      Energy => State(_1, _2, _3 + e, _4, _5, _6, _7, _8, _9)
+    case v:       Vigor => State(_1, _2, _3, _4 + v, _5, _6, _7, _8, _9)
+    case s:    Strength => State(_1, _2, _3, _4, _5 + s, _6, _7, _8, _9)
+    case e:   Endurance => State(_1, _2, _3, _4, _5, _6 + e, _7, _8, _9)
+    case i: Imagination => State(_1, _2, _3, _4, _5, _6, _7 + i, _8, _9)
+    case w:        Will => State(_1, _2, _3, _4, _5, _6, _7, _8 + w, _9)
+    case a:     Agility => State(_1, _2, _3, _4, _5, _6, _7, _8, _9 + a)
+  }
 
-  def apply(f: Function2[Property, Int, Int], property: Property): State = property match{
-    case      Health(pt) => State(Health(f(_1, pt)), _2, _3, _4, _5, _6, _7, _8, _9)
-    case        Mana(pt) => State(_1, Mana(f(_2, pt)), _3, _4, _5, _6, _7, _8, _9)
-    case      Energy(pt) => State(_1, _2, Energy(f(_3, pt)), _4, _5, _6, _7, _8, _9)
-    case       Vigor(pt) => State(_1, _2, _3, Vigor(f(_4, pt)), _5, _6, _7, _8, _9)
-    case    Strength(pt) => State(_1, _2, _3, _4, Strength(f(_5, pt)), _6, _7, _8, _9)
-    case   Endurance(pt) => State(_1, _2, _3, _4, _5, Endurance(f(_6, pt)), _7, _8, _9)
-    case Imagination(pt) => State(_1, _2, _3, _4, _5, _6, Imagination(f(_7, pt)), _8, _9)
-    case        Will(pt) => State(_1, _2, _3, _4, _5, _6, _7, Will(f(_8, pt)), _9)
-    case     Agility(pt) => State(_1, _2, _3, _4, _5, _6, _7, _8, Agility(f(_9, pt)))
+  def -[T <: Property[T]](property: T): State = property match{
+    case h:      Health => State(_1 - h, _2, _3, _4, _5, _6, _7, _8, _9)
+    case m:        Mana => State(_1, _2 - m, _3, _4, _5, _6, _7, _8, _9)
+    case e:      Energy => State(_1, _2, _3 - e, _4, _5, _6, _7, _8, _9)
+    case v:       Vigor => State(_1, _2, _3, _4 - v, _5, _6, _7, _8, _9)
+    case s:    Strength => State(_1, _2, _3, _4, _5 - s, _6, _7, _8, _9)
+    case e:   Endurance => State(_1, _2, _3, _4, _5, _6 - e, _7, _8, _9)
+    case i: Imagination => State(_1, _2, _3, _4, _5, _6, _7 - i, _8, _9)
+    case w:        Will => State(_1, _2, _3, _4, _5, _6, _7, _8 - w, _9)
+    case a:     Agility => State(_1, _2, _3, _4, _5, _6, _7, _8, _9 - a)
   }
 }
 
@@ -100,8 +124,8 @@ case class Unit(val     name: String,
                 val elememts: List[Element],
                 val    state: State)
 {
-  def +(property: Property): Unit = Unit(name, elememts, state + property)
-  def -(property: Property): Unit = Unit(name, elememts, state - property)
+  def +[T <: Property[T]](property: T): Unit = Unit(name, elememts, state + property)
+  def -[T <: Property[T]](property: T): Unit = Unit(name, elememts, state - property)
 }
 
 abstract class Terrain(     name: String,
@@ -131,6 +155,7 @@ val Footman = new Unit( "Footman",
 println(Fire.Large(Water.Small))
 println(Footman)
 println(Footman - Health(10))
+println(Footman.state.health - Health(5))
 
 // abstract class Action
 // case class   Move extends Action
