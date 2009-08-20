@@ -7,29 +7,29 @@ type Env = TreeMap[ObjectId, Unit]
 type Loc = (Int, Int)
 
 abstract class Effect
-case class Ampify(val quantity: Int) extends Effect
-case class Absorb(val quantity: Int) extends Effect
+case class Ampify(val pt: Int) extends Effect
+case class Absorb(val pt: Int) extends Effect
 
 abstract class Buff
 case class Enrage() extends Buff
 
 abstract class Element{
   def apply(e: Element): Effect = (this, e) match{
-    case (Fire(q0),  Fire(q1)) => absorb(q0, q1)
-    case (Fire(q0), Water(q1)) => weaken(q0, q1)
+    case (Fire(p0),  Fire(p1)) => absorb(p0, p1)
+    case (Fire(p0), Water(p1)) => weaken(p0, p1)
     case _                     => ampify( 0,  0)
   }
 
-  def absorb(q0: Int, q1: Int) = Absorb(+(q0 + q1))
-  def ampify(q0: Int, q1: Int) = Ampify(+(q0 + q1))
-  def weaken(q0: Int, q1: Int) = Ampify(-(q0 + q1))
+  def absorb(p0: Int, p1: Int) = Absorb(+(p0 + p1))
+  def ampify(p0: Int, p1: Int) = Ampify(+(p0 + p1))
+  def weaken(p0: Int, p1: Int) = Ampify(-(p0 + p1))
 }
 
-case class Earth(val quantity: Int) extends Element
-case class Water(val quantity: Int) extends Element
-case class  Fire(val quantity: Int) extends Element
-case class   Air(val quantity: Int) extends Element
-case class Light(val quantity: Int) extends Element
+case class Earth(val pt: Int) extends Element
+case class Water(val pt: Int) extends Element
+case class  Fire(val pt: Int) extends Element
+case class   Air(val pt: Int) extends Element
+case class Light(val pt: Int) extends Element
 
 trait ElementTrait[T]{
   val create: Int => T         // abstract value
