@@ -1,10 +1,15 @@
 
 package org.godfat.sb
 
-case class Creature(      name: String,
-                      elements: List[Element],
-                         state: State,
-                     abilities: List[Ability]) extends Unit(name, elements, state)
+object CreatureState extends State(Health(50), Mana(25), Energy(25), Vigor(25),
+                                   Strength(25), Constitution(10), Imagination(25), Will(10),
+                                   Agility(10))
+
+case class Creature(      name: String        = "Creature",
+                      elements: List[Element] = Nil,
+                         state: State         = CreatureState,
+                     abilities: List[Ability] = Nil ) extends
+  Unit(name, elements, state)
 {
   type  This = Creature
   val create = Creature(name, elements, _: State, abilities)

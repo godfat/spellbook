@@ -5,12 +5,10 @@ object TerrainState extends State(Health(999), Mana(0), Energy(0), Vigor(0),
                                   Strength(0), Constitution(99), Imagination(0), Will(99),
                                   Agility(0))
 
-abstract class Terrain(     name: String,
-                        elememts: List[Element],
-                           state: State = TerrainState)
+abstract class Terrain(     name: String        = "Terrain",
+                        elememts: List[Element] = Nil,
+                           state: State         = TerrainState )
          extends Unit(name, elememts, state)
-{
-}
 
 case class Road(state: State = TerrainState) extends
   Terrain("Road", Nil, state)
