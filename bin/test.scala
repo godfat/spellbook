@@ -8,7 +8,6 @@ import org.godfat.sb.Water
 import org.godfat.sb.Footman
 import org.godfat.sb.Health
 import org.godfat.sb.River
-import org.godfat.sb.TerrainState
 
 abstract class Buff
 case class Enrage() extends Buff

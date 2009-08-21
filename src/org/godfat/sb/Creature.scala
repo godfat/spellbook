@@ -1,13 +1,13 @@
 
 package org.godfat.sb
 
-object CreatureState extends State(Health(50), Mana(25), Energy(25), Vigor(25),
+object StateCreature extends State(Health(50), Mana(25), Energy(25), Vigor(25),
                                    Strength(25), Constitution(10), Imagination(25), Will(10),
                                    Agility(10))
 
 case class Creature(      name: String        = "Creature",
                       elements: List[Element] = Nil,
-                         state: State         = CreatureState,
+                         state: State         = StateCreature,
                      abilities: List[Ability] = Nil ) extends
   Unit(name, elements, state)
 {
