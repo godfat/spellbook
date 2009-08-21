@@ -13,26 +13,34 @@ case class State( health: Health, mana: Mana, energy: Energy, vigor: Vigor,
                       agility)
 {
   def +(property: Property): State = property match{
-    case h:       Health => State(_1 + h, _2, _3, _4, _5, _6, _7, _8, _9)
-    case m:         Mana => State(_1, _2 + m, _3, _4, _5, _6, _7, _8, _9)
-    case e:       Energy => State(_1, _2, _3 + e, _4, _5, _6, _7, _8, _9)
-    case v:        Vigor => State(_1, _2, _3, _4 + v, _5, _6, _7, _8, _9)
-    case s:     Strength => State(_1, _2, _3, _4, _5 + s, _6, _7, _8, _9)
-    case c: Constitution => State(_1, _2, _3, _4, _5, _6 + c, _7, _8, _9)
-    case i:  Imagination => State(_1, _2, _3, _4, _5, _6, _7 + i, _8, _9)
-    case w:         Will => State(_1, _2, _3, _4, _5, _6, _7, _8 + w, _9)
-    case a:      Agility => State(_1, _2, _3, _4, _5, _6, _7, _8, _9 + a)
+    case h:       Health => create(      health = _1 + h)
+    case m:         Mana => create(        mana = _2 + m)
+    case e:       Energy => create(      energy = _3 + e)
+    case v:        Vigor => create(       vigor = _4 + v)
+    case s:     Strength => create(    strength = _5 + s)
+    case c: Constitution => create(constitution = _6 + c)
+    case i:  Imagination => create( imagination = _7 + i)
+    case w:         Will => create(        will = _8 + w)
+    case a:      Agility => create(     agility = _9 + a)
   }
 
   def -(property: Property): State = property match{
-    case h:       Health => State(_1 - h, _2, _3, _4, _5, _6, _7, _8, _9)
-    case m:         Mana => State(_1, _2 - m, _3, _4, _5, _6, _7, _8, _9)
-    case e:       Energy => State(_1, _2, _3 - e, _4, _5, _6, _7, _8, _9)
-    case v:        Vigor => State(_1, _2, _3, _4 - v, _5, _6, _7, _8, _9)
-    case s:     Strength => State(_1, _2, _3, _4, _5 - s, _6, _7, _8, _9)
-    case c: Constitution => State(_1, _2, _3, _4, _5, _6 - c, _7, _8, _9)
-    case i:  Imagination => State(_1, _2, _3, _4, _5, _6, _7 - i, _8, _9)
-    case w:         Will => State(_1, _2, _3, _4, _5, _6, _7, _8 - w, _9)
-    case a:      Agility => State(_1, _2, _3, _4, _5, _6, _7, _8, _9 - a)
+    case h:       Health => create(      health = _1 - h)
+    case m:         Mana => create(        mana = _2 - m)
+    case e:       Energy => create(      energy = _3 - e)
+    case v:        Vigor => create(       vigor = _4 - v)
+    case s:     Strength => create(    strength = _5 - s)
+    case c: Constitution => create(constitution = _6 - c)
+    case i:  Imagination => create( imagination = _7 - i)
+    case w:         Will => create(        will = _8 - w)
+    case a:      Agility => create(     agility = _9 - a)
   }
+
+  def create(health: Health = _1, mana: Mana = _2, energy: Energy = _3, vigor: Vigor = _4,
+             strength: Strength = _5, constitution: Constitution = _6,
+             imagination: Imagination = _7, will: Will = _8,
+             agility: Agility = _9) =
+      State(health, mana, energy, vigor,
+            strength, constitution, imagination, will,
+            agility)
 }
