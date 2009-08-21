@@ -3,7 +3,8 @@
   <description>this is an experiment to the models of spellbook</description>
   <target name="build" depends="package"/>
 
-  <property name="scala.lib.dir" location="/opt/local/share/scala/lib"/>
+  <property name="scala.dir" location="scala-2.8.0.r18509-b20090819020207"/>
+  <property name="scala.lib.dir" location="${scala.dir}/lib"/>
   <property name="src.dir" location="${basedir}/src" />
   <property name="lib.dir" location="${basedir}/lib"/>
   <property name="build.dir" location="${basedir}/build"/>
