@@ -8,11 +8,12 @@ object StateCreature extends State(Health(50), Mana(25), Energy(25), Vigor(25),
 case class Creature(      name: String        = "Creature",
                       elements: List[Element] = Nil,
                          state: State         = StateCreature,
-                     abilities: List[Ability] = Nil ) extends
+                     abilities: List[Ability] = Nil,
+                         buffs: List[Buff]    = Nil ) extends
   Unit(name, elements, state)
 {
   type  This = Creature
-  val create = Creature(name, elements, _: State, abilities)
+  val create = Creature(name, elements, _: State, abilities, buffs)
 }
 
 object Footman extends Creature( "Footman",
@@ -20,4 +21,4 @@ object Footman extends Creature( "Footman",
                                  State(Health(100), Mana(10), Energy(50), Vigor(50),
                                  Strength(40), Constitution(20), Imagination(10), Will(10),
                                  Agility(15)),
-                                 List() )
+                                 List(MeleeAttack()) )

@@ -9,9 +9,6 @@ import org.godfat.sb.Footman
 import org.godfat.sb.Health
 import org.godfat.sb.River
 
-abstract class Buff
-case class Enrage() extends Buff
-
 println(Fire.Large(Water.Small))
 println(Footman.name)
 println(Footman - Health(10))
