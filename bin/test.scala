@@ -17,7 +17,7 @@ println(Fire.Large(Water.Small))
 println(Footman.name)
 println(Footman - Health(10))
 println(Footman.state.health - Health(5))
-println(River(TerrainState) - Health(50))
+println(River() - Health(50))
 
 // abstract class Action
 // case class   Move extends Action
