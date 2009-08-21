@@ -12,7 +12,7 @@ case class State( val health: Health, val mana: Mana, val energy: Energy, val vi
                       strength, constitution, imagination, will,
                       agility)
 {
-  def +[T <: Property[T]](property: T): State = property match{
+  def +(property: Property): State = property match{
     case h:       Health => State(_1 + h, _2, _3, _4, _5, _6, _7, _8, _9)
     case m:         Mana => State(_1, _2 + m, _3, _4, _5, _6, _7, _8, _9)
     case e:       Energy => State(_1, _2, _3 + e, _4, _5, _6, _7, _8, _9)
@@ -24,7 +24,7 @@ case class State( val health: Health, val mana: Mana, val energy: Energy, val vi
     case a:      Agility => State(_1, _2, _3, _4, _5, _6, _7, _8, _9 + a)
   }
 
-  def -[T <: Property[T]](property: T): State = property match{
+  def -(property: Property): State = property match{
     case h:       Health => State(_1 - h, _2, _3, _4, _5, _6, _7, _8, _9)
     case m:         Mana => State(_1, _2 - m, _3, _4, _5, _6, _7, _8, _9)
     case e:       Energy => State(_1, _2, _3 - e, _4, _5, _6, _7, _8, _9)

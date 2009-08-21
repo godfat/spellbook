@@ -5,8 +5,8 @@ case class Unit(val     name: String,
                 val elememts: List[Element],
                 val    state: State)
 {
-  def +[T <: Property[T]](property: T): Unit = Unit(name, elememts, state + property)
-  def -[T <: Property[T]](property: T): Unit = Unit(name, elememts, state - property)
+  def +(property: Property): Unit = Unit(name, elememts, state + property)
+  def -(property: Property): Unit = Unit(name, elememts, state - property)
 }
 
 object Footman extends Unit( "Footman",
