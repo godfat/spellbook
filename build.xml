@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="spellbook" default="build" basedir=".">
+  <description>this is an experiment to the models of spellbook</description>
+  <target name="build" depends="package"/>
+
+  <property name="scala.lib.dir" location="/opt/local/share/scala/lib"/>
+  <property name="src.dir" location="${basedir}/src" />
+  <property name="lib.dir" location="${basedir}/lib"/>
+  <property name="build.dir" location="${basedir}/build"/>
+  <property name="cls.build.dir" location="${build.dir}/classes"/>
+  <property name="lib.build.dir" location="${build.dir}/lib"/>
+
+  <path id="project.classpath">
+    <pathelement location="${scala.lib.dir}/scala-library.jar"/>
+  </path>
+
+  <taskdef resource="scala/tools/ant/antlib.xml">
+    <classpath>
+      <pathelement location="${scala.lib.dir}/scala-compiler.jar"/>
+      <pathelement location="${scala.lib.dir}/scala-library.jar"/>
+    </classpath>
+  </taskdef>
+
+  <target name="clean">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <target name="compile" depends="clean">
+    <mkdir dir="${cls.build.dir}"/>
+    <fsc srcdir="${src.dir}" destdir="${cls.build.dir}" classpathref="project.classpath"
+         force="never" deprecation="yes" unchecked="yes">
+      <include name="**/*.scala"/>
+    </fsc>
+  </target>
+
+  <target name="package" depends="compile">
+    <mkdir dir="${lib.build.dir}"/>
+    <jar destfile="${lib.build.dir}/spellbook.jar">
+      <fileset dir="${cls.build.dir}"/>
+    </jar>
+  </target>
+</project>
