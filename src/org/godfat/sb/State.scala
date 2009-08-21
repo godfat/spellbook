@@ -1,10 +1,10 @@
 
 package org.godfat.sb
 
-case class State( val health: Health, val mana: Mana, val energy: Energy, val vigor: Vigor,
-                  val strength: Strength, val constitution: Constitution,
-                  val imagination: Imagination, val will: Will,
-                  val agility: Agility ) extends
+case class State( health: Health, mana: Mana, energy: Energy, vigor: Vigor,
+                  strength: Strength, constitution: Constitution,
+                  imagination: Imagination, will: Will,
+                  agility: Agility ) extends
                  (Health, Mana, Energy, Vigor,
                   Strength, Constitution, Imagination, Will,
                   Agility)(

@@ -10,47 +10,47 @@ sealed abstract class Property{
   def -(p: This): This = create(pt - p.pt)
 }
 // hp
-case class     Health      (val pt: Int) extends Property{
+case class     Health      (pt: Int) extends Property{
   type  This = Health
   val create = Health(_)
 }
 // mp
-case class     Mana        (val pt: Int) extends Property{
+case class     Mana        (pt: Int) extends Property{
   type  This = Mana
   val create = Mana(_)
 }
 // resource
-case class     Energy      (val pt: Int) extends Property{
+case class     Energy      (pt: Int) extends Property{
   type  This = Energy
   val create = Energy(_)
 }
 // action point
-case class     Vigor       (val pt: Int) extends Property{
+case class     Vigor       (pt: Int) extends Property{
   type  This = Vigor
   val create = Vigor(_)
 }
 // p-atk
-case class     Strength    (val pt: Int) extends Property{
+case class     Strength    (pt: Int) extends Property{
   type  This = Strength
   val create = Strength(_)
 }
 // p-def
-case class     Constitution(val pt: Int) extends Property{
+case class     Constitution(pt: Int) extends Property{
   type  This = Constitution
   val create = Constitution(_)
 }
 // m-atk
-case class     Imagination (val pt: Int) extends Property{
+case class     Imagination (pt: Int) extends Property{
   type  This = Imagination
   val create = Imagination(_)
 }
 // m-def
-case class     Will        (val pt: Int) extends Property{
+case class     Will        (pt: Int) extends Property{
   type  This = Will
   val create = Will(_)
 }
 // decides speed in vm
-case class     Agility     (val pt: Int) extends Property{
+case class     Agility     (pt: Int) extends Property{
   type  This = Agility
   val create = Agility(_)
 }

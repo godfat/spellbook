@@ -32,11 +32,11 @@ abstract class Element{
   def weaken(p0: Int, p1: Int) = Ampify(-(p0 + p1))
 }
 
-case class Earth(val pt: Int) extends Element
-case class Water(val pt: Int) extends Element
-case class  Fire(val pt: Int) extends Element
-case class   Air(val pt: Int) extends Element
-case class Light(val pt: Int) extends Element
+case class Earth(pt: Int) extends Element
+case class Water(pt: Int) extends Element
+case class  Fire(pt: Int) extends Element
+case class   Air(pt: Int) extends Element
+case class Light(pt: Int) extends Element
 
 trait ElementConstant[T]{
   val create: Int => T         // abstract value
