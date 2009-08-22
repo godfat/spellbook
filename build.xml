@@ -2,6 +2,7 @@
 <project name="spellbook" default="build" basedir=".">
   <description>this is an experiment to the models of spellbook</description>
   <target name="build" depends="package"/>
+  <target name="rebuild"  depends="clean,build"/>
 
   <property name="scala.dir" location="scala-2.8.0.r18509-b20090819020207"/>
   <property name="scala.lib.dir" location="${scala.dir}/lib"/>
@@ -26,7 +27,7 @@
     <delete dir="${build.dir}"/>
   </target>
 
-  <target name="compile" depends="clean">
+  <target name="compile">
     <mkdir dir="${cls.build.dir}"/>
     <fsc srcdir="${src.dir}" destdir="${cls.build.dir}" classpathref="project.classpath"
          force="never" deprecation="yes" unchecked="yes">
