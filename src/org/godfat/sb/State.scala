@@ -5,12 +5,11 @@ case class State( health: Health, mana: Mana, energy: Energy, vigor: Vigor,
                   strength: Strength, constitution: Constitution,
                   imagination: Imagination, will: Will,
                   agility: Agility ) extends
-                 (Health, Mana, Energy, Vigor,
-                  Strength, Constitution, Imagination, Will,
-                  Agility)(
-                      health, mana, energy, vigor,
-                      strength, constitution, imagination, will,
-                      agility)
+  (Health, Mana, Energy, Vigor,
+   Strength, Constitution, Imagination, Will,
+   Agility)(      health, mana, energy, vigor,
+                  strength, constitution, imagination, will,
+                  agility )
 {
   def +(property: Property): State = property match{
     case h:       Health => create(      health = _1 + h)
