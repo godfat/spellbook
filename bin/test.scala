@@ -14,7 +14,6 @@ println(River() - Health(50))
 println()
 
 val river: Terrain = River() + Energy(10)
-println(river.state.energy)
 println(river.stay_here(Footman))
 
 // abstract class Action

@@ -8,7 +8,7 @@ object StateTerrain extends State(Health(999), Mana(0), Energy(0), Vigor(0),
 abstract class Terrain( override val     name: String        = "Terrain",
                         override val elements: List[Element] = Nil,
                         override val    state: State         = StateTerrain )
-         extends Unit(name, elememts, state)
+         extends Unit(name, elements, state)
 {
   // def walk_over(creature: Creature): Creature
   def stay_here(creature: Creature): (Creature, This) =
