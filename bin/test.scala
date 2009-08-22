@@ -15,7 +15,3 @@ println()
 
 val river: Terrain = River() + Energy(10)
 println(river.stay_here(Footman))
-
-// abstract class Action
-// case class   Move extends Action
-// case class Attack extends Action
