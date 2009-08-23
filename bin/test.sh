@@ -1,3 +1,3 @@
 #!/bin/sh
 
-scala-2.8.0.r18509-b20090819020207/bin/scala -cp build/lib/spellbook.jar bin/test.scala
+scala-2.8.0.r18549-b20090823020847/bin/scala -cp build/lib/spellbook.jar bin/test.scala

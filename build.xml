@@ -4,7 +4,7 @@
   <target name="build" depends="package"/>
   <target name="rebuild"  depends="clean,build"/>
 
-  <property name="scala.dir" location="scala-2.8.0.r18509-b20090819020207"/>
+  <property name="scala.dir" location="scala-2.8.0.r18549-b20090823020847"/>
   <property name="scala.lib.dir" location="${scala.dir}/lib"/>
   <property name="src.dir" location="${basedir}/src" />
   <property name="lib.dir" location="${basedir}/lib"/>
