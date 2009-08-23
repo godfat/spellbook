@@ -11,8 +11,8 @@ abstract class Terrain( override val     name: String        = "Terrain",
          extends Unit(name, elements, state)
 {
   // def walk_over(creature: Creature): Creature
-  def stay_here(creature: Creature): (Creature, This) =
-    (creature + state.energy, this - state.energy)
+  def stay_here(creature: Creature): (This, Creature) =
+    (this - state.energy, creature + state.energy)
 }
 
 case class Road(override val state: State = StateTerrain) extends
