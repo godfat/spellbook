@@ -6,6 +6,7 @@
 // type Map = List[Block]
 
 import org.godfat.sb._
+import scala.collection.immutable.TreeMap
 
 println(Fire.Large(Water.Small))
 println(Footman.name)
@@ -20,10 +21,11 @@ println(river.stay_here(Footman))
 
 println()
 
-val from = Block(river, Footman)
-val to   = Block(river, Footman)
+val from = Block(0, river, Footman)
+val to   = Block(1, river, Footman)
+val map  = Map(2, 1, TreeMap(0 -> from, 1 -> to))
 
-println(MeleeAttack().activate(from, to))
+println(MeleeAttack().activate(map, from, to))
 
 // val (new_block, updated_blocks) = ability.activate(block, target)
 
