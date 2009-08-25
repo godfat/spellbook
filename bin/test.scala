@@ -27,6 +27,13 @@ val map  = Map(2, 1, TreeMap(0 -> from, 1 -> to))
 
 println(MeleeAttack().activate(map, from, to))
 
+println()
+
+val map2 = Map(5, 5, List.range(0, 26).foldRight(TreeMap[Int, Block]())(
+  (i: Int, t: TreeMap[Int, Block]) => t.insert(i, Block(i, river, Footman))))
+
+println(map2.nearby(Block(12, river, Footman), 2).map(_.index))
+
 // val (new_block, updated_blocks) = ability.activate(block, target)
 
 // walk_to :: Path -> Creature -> Path
