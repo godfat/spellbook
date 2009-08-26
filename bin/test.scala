@@ -20,6 +20,8 @@ println()
 
 val river: Terrain = River() + Energy(10)
 println(river.stay_here(Footman))
+val block: Block = Block(0, river, Nothing)
+println(block.stay_here(Footman))
 
 println()
 
