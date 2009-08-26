@@ -2,7 +2,7 @@
 <project name="spellbook" default="build" basedir=".">
   <description>this is an experiment to the models of spellbook</description>
   <target name="build" depends="package"/>
-  <target name="rebuild"  depends="clean,build"/>
+  <target name="rebuild" depends="clean,build"/>
 
   <property name="scala.dir" location="scala-2.8.0.r18549-b20090823020847"/>
   <property name="scala.lib.dir" location="${scala.dir}/lib"/>
