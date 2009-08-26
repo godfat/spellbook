@@ -1,6 +1,8 @@
 
 package org.godfat.sb
 
+import prelude_sb._
+
 abstract class Ability{
   def activate(map: Map, from: Block, to: Block): (Block, List[Block]) = {
     (consume(from), select(map, to).map(apply(from, _)))
@@ -17,12 +19,17 @@ case class Move()         extends AbilityActive
 case class Wait()         extends AbilityActive
 
 case class MeleeAttack()  extends AbilityActive{
-  override def consume(from: Block): Block =
-    Block( from.index, from.terrain, from.creature - Vigor(10) )
+  override def consume(from: Block): Block = from.creature match{
+    case Just(c: Creature) => Block( from.index, from.terrain, Just(c - Vigor(10)) )
+    case _                 => error("no creature for consume")
+  }
 
-  override def apply(from: Block, to: Block) = {
-    val damage: Int = from.creature.state.strength.pt - to.creature.state.constitution.pt
-    Block( to.index, to.terrain, to.creature - Health(damage) )
+  override def apply(from: Block, to: Block): Block = (from.creature, to.creature) match{
+    case (Just(fc: Creature), Just(tc: Creature)) => {
+      val damage: Int = fc.state.strength.pt - tc.state.constitution.pt
+      Block( to.index, to.terrain, Just(tc - Health(damage)) )
+    }
+    case _                 => error("missing creature(s) for melee attack")
   }
 }
 
