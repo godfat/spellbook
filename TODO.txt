@@ -1,0 +1,13 @@
+
+== spellbook TODO list
+
+* rename walk_over to ?
+* implement River, Lava, etc. specific terrain effect on put_on.
+* implement Power class, wrap a single output for Ability.
+* implement AbilityActiveSimple, to ease implementing
+  simple ability like MeleeAttack, RangedAttack, etc.
+  let you write something like...
+  case class MeleeAttack() extends AbilityActiveSimple(
+    Strength, Constitution, Health, Range(1), AoE(0)
+  )
+* implement elements effect.
