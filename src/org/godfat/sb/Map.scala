@@ -15,8 +15,9 @@ case class Map(val width: Int, val height: Int, val blocks: TreeMap[Int, Block])
   def down_right(b: Block): Option[Block] = blocks.get(b.index + width + 1)
 
   private def bfs(not_traveled: List[(Int, Block)],
-                      traveled: TreeSet[Block] = TreeSet.empty[Block](Ordering.ordered[Block])):
-    List[Block] = not_traveled match{
+                      traveled: TreeSet[Block] =
+                    TreeSet.empty[Block](Ordering.ordered[Block])): List[Block] =
+    not_traveled match{
       case Nil               =>
         traveled.toList
 
@@ -36,4 +37,10 @@ case class Map(val width: Int, val height: Int, val blocks: TreeMap[Int, Block])
 
   private def insert_check(traveled: TreeSet[Block], b: Block): TreeSet[Block] =
     if(traveled.contains(b)) traveled else traveled.insert(b)
+}
+
+object Map{
+  def create(width: Int, height: Int, f: Int => Block): Map =
+    Map(width, height, List.range(0, width * height + 1).foldRight(TreeMap[Int, Block]())(
+      (i: Int, t: TreeMap[Int, Block]) => t.insert(i, f(i))))
 }

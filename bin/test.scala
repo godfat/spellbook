@@ -33,8 +33,7 @@ println(MeleeAttack().activate(map, from, to))
 
 println()
 
-val map2 = Map(5, 5, List.range(0, 26).foldRight(TreeMap[Int, Block]())(
-  (i: Int, t: TreeMap[Int, Block]) => t.insert(i, Block(i, river, Just(Footman)))))
+val map2 = Map.create(5, 5, Block(_, river, Nothing))
 
 println(map2.nearby(Block(12, river, Just(Footman)), 2).map(_.index))
 
