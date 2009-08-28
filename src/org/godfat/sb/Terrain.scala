@@ -12,7 +12,7 @@ abstract class Terrain( override val     name: String        = "Terrain",
 {
   type This <: Terrain
   // def walk_over(creature: Creature): Creature
-  def stay_here(creature: Creature): (This, Creature) =
+  def put_on(creature: Creature): (This, Creature) =
     (this - state.energy, creature + state.energy)
 }
 

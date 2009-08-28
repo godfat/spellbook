@@ -19,9 +19,9 @@ println(River() - Health(50))
 println()
 
 val river: Terrain = River() + Energy(10)
-println(river.stay_here(Footman))
+println(river.put_on(Footman))
 val block: Block = Block(0, river, Nothing)
-println(block.stay_here(Footman))
+println(block.put_on(Footman))
 
 println()
 
