@@ -37,6 +37,9 @@ val map2 = Map.create(5, 5, Block(_, river, Nothing))
 
 println(map2.nearby(12, 2).map(_.index))
 
+println()
+println(CreatureMap("Footman") == Footman)
+
 // val (new_block, updated_blocks) = ability.activate(block, target)
 
 // walk_to :: Path -> Creature -> Path
