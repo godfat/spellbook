@@ -11,3 +11,4 @@
     Strength, Constitution, Health, Range(1), AoE(0)
   )
 * implement elements effect.
+* implement maximum property (e.g. Health) via CreatureMap lookup
