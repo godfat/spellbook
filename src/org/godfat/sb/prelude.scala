@@ -1,5 +1,7 @@
 
-package object prelude_sb{
+package org.godfat.sb
+
+package object prelude{
   type   Maybe[+A] = Option[A]
   type    Just[+A] =   Some[A]
    val    Just     =   Some

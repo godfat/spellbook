@@ -6,7 +6,7 @@
 // type Map = List[Block]
 
 import org.godfat.sb._
-import prelude_sb._
+import org.godfat.sb.prelude._
 
 import scala.collection.immutable.TreeMap
 

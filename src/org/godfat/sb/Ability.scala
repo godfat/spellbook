@@ -1,7 +1,7 @@
 
 package org.godfat.sb
 
-import prelude_sb._
+import prelude._
 
 abstract class Ability{
   def activate(map: Map, from: Block, to: Block): (Block, List[Block]) = {

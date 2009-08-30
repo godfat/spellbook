@@ -1,7 +1,7 @@
 
 package org.godfat.sb
 
-import prelude_sb._
+import prelude._
 
 case class Block(val index: Int, val terrain: Terrain, val creature: Maybe[Creature]) extends
   (Terrain, Maybe[Creature])(terrain, creature) with Ordered[Block]
