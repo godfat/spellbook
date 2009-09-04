@@ -38,13 +38,7 @@ case class  Fire(pt: Int) extends Element
 case class   Air(pt: Int) extends Element
 case class Light(pt: Int) extends Element
 
-trait ElementConstant[T]{
-  val create: Int => T         // abstract value
-  lazy val Large = create(100) // lazy value
-  lazy val Small = create(25)
-}
-
-object Earth extends ElementConstant[Earth]{ val create = Earth(_) }
-object Water extends ElementConstant[Water]{ val create = Water(_) }
-object  Fire extends ElementConstant[ Fire]{ val create =  Fire(_) }
-object   Air extends ElementConstant[  Air]{ val create =   Air(_) }
+object Earth extends TraitElement[Earth]{ val create = Earth(_) }
+object Water extends TraitElement[Water]{ val create = Water(_) }
+object  Fire extends TraitElement[ Fire]{ val create =  Fire(_) }
+object   Air extends TraitElement[  Air]{ val create =   Air(_) }
