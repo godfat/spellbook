@@ -40,6 +40,8 @@ println(map2.nearby(12, 2).map(_.index))
 println()
 println(CreatureMap("Footman") == Footman)
 
+println(Absorb(10) + Absorb(-10))
+
 // val (new_block, updated_blocks) = ability.activate(block, target)
 
 // walk_to :: Path -> Creature -> Path

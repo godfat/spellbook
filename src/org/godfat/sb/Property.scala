@@ -1,14 +1,8 @@
 
 package org.godfat.sb
 
-sealed abstract class Property{
-  type This <: Property
-  val pt: Int
-  val create: Int => This
+sealed abstract class Property extends TraitProperty[Property]
 
-  def +(p: This): This = create(pt + p.pt)
-  def -(p: This): This = create(pt - p.pt)
-}
 // hp
 case class     Health      (pt: Int) extends Property{
   type  This = Health

@@ -1,6 +1,14 @@
 
 package org.godfat.sb
 
-abstract class Effect
-case class Ampify(pt: Int) extends Effect
-case class Absorb(pt: Int) extends Effect
+sealed abstract class Effect extends TraitProperty[Effect]
+
+case class Ampify(val pt: Int) extends Effect{
+  type  This = Ampify
+  val create = Ampify(_)
+}
+
+case class Absorb(val pt: Int) extends Effect{
+  type  This = Absorb
+  val create = Absorb(_)
+}
