@@ -1,7 +1,7 @@
 
 package org.godfat.sb
 
-sealed abstract class Property extends TraitProperty[Property]
+sealed abstract class Property extends TraitAttribute[Property]
 
 // hp
 case class     Health      (pt: Int) extends Property{

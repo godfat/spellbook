@@ -1,8 +1,8 @@
 
 package org.godfat.sb
 
-trait TraitProperty[T]{
-  type This <: TraitProperty[T]
+trait TraitAttribute[T]{
+  type This <: TraitAttribute[T]
   val pt: Int
   val create: Int => This
 
