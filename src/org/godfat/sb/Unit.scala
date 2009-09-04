@@ -16,4 +16,14 @@ abstract class Unit
 
   def +(property: Property): This = create(state + property)
   def -(property: Property): This = create(state - property)
+
+  def affect(that: Unit): (Ampify, Absorb) =
+    (for(x <- this.elements; y <- that.elements) yield(x, y)).
+      map( (z: (Element, Element)) => z._1(z._2) ).
+        foldRight( (Ampify(), Absorb()) )(
+          (e: Effect, r: (Ampify, Absorb)) => e match{
+            case amp: Ampify => (r._1 + amp, r._2)
+            case abs: Absorb => (r._1, r._2 + abs)
+          }
+        )
 }

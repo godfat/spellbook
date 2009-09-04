@@ -41,6 +41,8 @@ println()
 println(CreatureMap("Footman") == Footman)
 
 println(Absorb(10) + Absorb(-10))
+println(Footman.affect(Footman))
+println(Footman.affect(River())) // should be 100 vs 50 => 150, not 250...
 
 // val (new_block, updated_blocks) = ability.activate(block, target)
 
