@@ -12,3 +12,4 @@
   )
 * implement elements effect.
 * implement maximum property (e.g. Health) via CreatureMap lookup
+* locale and translation
