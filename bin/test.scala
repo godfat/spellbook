@@ -10,7 +10,7 @@ import org.godfat.sb.prelude._
 
 import scala.collection.immutable.TreeMap
 
-println(Fire.Large(Water.Small))
+println(Fire.Innate(Water.Innate))
 println(Footman.name)
 println(Footman - Health(10))
 println(Footman.state.health - Health(5))

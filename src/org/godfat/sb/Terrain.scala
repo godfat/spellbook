@@ -21,28 +21,28 @@ case class Road(val state: State = StateTerrain) extends Terrain("Road")
 }
 
 case class Forest(val state: State = StateTerrain) extends
-  Terrain("Forest", List(Earth.Small, Earth.Small))
+  Terrain("Forest", List(Earth.Innate))
 {
   type  This = Forest
   val create = Forest(_)
 }
 
 case class River(val state: State = StateTerrain) extends
-  Terrain("River",  List(Water.Small, Water.Small))
+  Terrain("River",  List(Water.Innate))
 {
   type  This = River
   val create = River(_)
 }
 
 case class Lava(val state: State = StateTerrain) extends
-  Terrain("Lava",   List( Fire.Small,  Fire.Small))
+  Terrain("Lava",   List(Fire.Innate))
 {
   type  This = Lava
   val create = Lava(_)
 }
 
 case class Plains(val state: State = StateTerrain) extends
-  Terrain("Plains", List(  Air.Small,   Air.Small))
+  Terrain("Plains", List(Air.Innate))
 {
   type  This = Plains
   val create = Plains(_)

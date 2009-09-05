@@ -1,7 +1,7 @@
 
 package org.godfat.sb
 
-abstract class Element{
+abstract class Element(val name: String){
   val pt: Int
 
   def apply(e: Element): Effect = (this, e) match{
@@ -32,13 +32,14 @@ abstract class Element{
   def weaken(p0: Int, p1: Int) = Ampify(-(p0 + p1))
 }
 
-case class Earth(pt: Int) extends Element
-case class Water(pt: Int) extends Element
-case class  Fire(pt: Int) extends Element
-case class   Air(pt: Int) extends Element
-case class Light(pt: Int) extends Element
+case class Earth(pt: Int) extends Element("Earth")
+case class Water(pt: Int) extends Element("Water")
+case class  Fire(pt: Int) extends Element( "Fire")
+case class   Air(pt: Int) extends Element(  "Air")
+case class Light(pt: Int) extends Element("Light")
 
 object Earth extends TraitElement[Earth]{ val create = Earth(_) }
 object Water extends TraitElement[Water]{ val create = Water(_) }
 object  Fire extends TraitElement[ Fire]{ val create =  Fire(_) }
 object   Air extends TraitElement[  Air]{ val create =   Air(_) }
+object Light extends TraitElement[Light]{ val create = Light(_) }
