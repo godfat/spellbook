@@ -10,41 +10,32 @@ import org.godfat.sb.prelude._
 
 import scala.collection.immutable.TreeMap
 
-println(Fire.Innate(Water.Innate))
-println(Footman.name)
-println(Footman - Health(10))
-println(Footman.state.health - Health(5))
-println(River() - Health(50))
+println(Fire.Innate(Water.Innate)) // Ampify(-200)
+println(Footman.name) // Footman
+println((Footman - Health(10)).state.health) // Health(90)
+println(Footman.state.health - Health(5)) // Health(95)
+println((River() - Health(50)).state.health) // Health(949)
 
-println()
+val b = Block(0, River() + Energy(10), Nothing).put_on(Footman)
+println(b.terrain.state.energy, b.creature.get.state.energy) // (Energy(0),Energy(60))
 
-val river: Terrain = River() + Energy(10)
-println(river.put_on(Footman))
-val block: Block = Block(0, river, Nothing)
-println(block.put_on(Footman))
-
-println()
-
-val from = Block(0, river, Just(Footman))
-val to   = Block(1, river, Just(Footman))
+val from = Block(0, River(), Just(Footman))
+val to   = Block(1, River(), Just(Footman))
 val map  = Map(2, 1, TreeMap(0 -> from, 1 -> to))
 
-println(MeleeAttack().activate(map, from, to))
+val (bb, lb) = MeleeAttack().activate(map, from, to)
+println((bb.creature.get.state.vigor, lb.head.creature.get.state.health)) // (Vigor(40),Health(80))
 
-println()
-
-val map2 = Map.create(5, 5, Block(_, river, Nothing))
+val map2 = Map.create(5, 5, Block(_, River(), Nothing))
 
 println(map2.nearby(12, 2).map(_.index))
+// List(0, 1, 2, 5, 6, 7, 8, 10, 11, 12, 13, 14, 16, 17, 18, 19, 22, 23, 24)
 
-println()
-println(CreatureMap("Footman") == Footman)
+println(CreatureMap("Footman") == Footman) // true
 
-println(Absorb(10) + Absorb(-10))
-println(Footman.affect(Footman))
-println(Footman.affect(River())) // should be 100 vs 50 => 150, not 250...
-
-// val (new_block, updated_blocks) = ability.activate(block, target)
+println(Absorb(10) + Absorb(-10)) // Absorb(0)
+println(Footman.affect(Footman)) // (Ampify(0),Absorb(200))
+println(Footman.affect(River())) // (Ampify(-200),Absorb(0))
 
 // walk_to :: Path -> Creature -> Path
 // walk_to path creature =
