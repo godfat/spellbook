@@ -36,12 +36,12 @@ trait AbilityPassive extends Ability
 case class Move()    extends AbilityActive
 case class Wait()    extends AbilityActive
 
-case class MeleeAttack() extends AbilitySimple[Vigor, Health] with AbilityActive{
+case class AttackMelee() extends AbilitySimple[Vigor, Health] with AbilityActive{
   override def   cost(fc: Creature) = Vigor(10)
   override def damage(fc: Creature, tc: Creature) =
     Health(fc.state.strength.pt - tc.state.constitution.pt)
 }
 
-case class RangedAttack() extends AbilityActive
+case class AttackRanged() extends AbilityActive
 
 case class Swimming()     extends AbilityPassive
