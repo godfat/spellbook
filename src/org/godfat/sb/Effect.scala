@@ -1,7 +1,7 @@
 
 package org.godfat.sb
 
-sealed abstract class Effect extends TraitAttribute[Effect]
+abstract class Effect extends TraitAttribute[Effect]
 
 case class Ampify(val pt: Int = 0) extends Effect{
   type  This = Ampify
