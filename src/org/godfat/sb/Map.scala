@@ -10,12 +10,19 @@ case class Map(val width: Int, val height: Int, val blocks: TreeMap[Int, Block])
     case None           => error("invalid block index: " + index.toString)
   }
 
-  def      left (b: Block): Option[Block] = blocks.get(if( b.index    % width == 0) -1 else b.index - 1)
-  def      right(b: Block): Option[Block] = blocks.get(if((b.index+1) % width == 0) -1 else b.index + 1)
-  def   up_left (b: Block): Option[Block] = blocks.get(b.index - width - ((b.index/width+1)%2))
-  def   up_right(b: Block): Option[Block] = blocks.get(b.index - width + ((b.index/width)  %2))
-  def down_left (b: Block): Option[Block] = blocks.get(b.index + width - ((b.index/width+1)%2))
-  def down_right(b: Block): Option[Block] = blocks.get(b.index + width + ((b.index/width)  %2))
+  def      left (b: Block): Option[Block] = blocks.get(      left_index(b.index))
+  def      right(b: Block): Option[Block] = blocks.get(     right_index(b.index))
+  def   up_left (b: Block): Option[Block] = blocks.get(   up_left_index(b.index))
+  def down_left (b: Block): Option[Block] = blocks.get( down_left_index(b.index))
+  def   up_right(b: Block): Option[Block] = blocks.get(  up_right_index(b.index))
+  def down_right(b: Block): Option[Block] = blocks.get(down_right_index(b.index))
+
+  def       left_index(index: Int): Int = if( index    % width == 0) -1 else index - 1
+  def      right_index(index: Int): Int = if((index+1) % width == 0) -1 else index + 1
+  def    up_left_index(index: Int): Int = left_index(  up_right_index(index))
+  def  down_left_index(index: Int): Int = left_index(down_right_index(index))
+  def   up_right_index(index: Int): Int = index - width + (index / width % 2)
+  def down_right_index(index: Int): Int = index + width + (index / width % 2)
 
   private def bfs(not_traveled: List[(Int, Block)],
                       traveled: TreeSet[Block] =
