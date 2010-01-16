@@ -5,11 +5,11 @@ import org.scalacheck._
 import org.godfat.sb._
 
 object CheckElement{
-  val gen = Gen.elements(Earth.Innate, Earth.Acquired,
-                         Water.Innate, Water.Acquired,
-                          Fire.Innate,  Fire.Acquired,
-                           Air.Innate,   Air.Acquired,
-                         Light.Innate, Light.Acquired)
+  val gen = Gen.oneOf(Earth.Innate, Earth.Acquired,
+                      Water.Innate, Water.Acquired,
+                       Fire.Innate,  Fire.Acquired,
+                        Air.Innate,   Air.Acquired,
+                      Light.Innate, Light.Acquired)
 
   implicit def arbEle: Arbitrary[Element] = Arbitrary(gen)
 
