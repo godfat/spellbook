@@ -13,11 +13,7 @@ object CheckElement{
 
   implicit def arbEle: Arbitrary[Element] = Arbitrary(gen)
 
-  def check = {
-    check_apply
-  }
-
-  def check_apply =
+  def check =
     forAll{ (a: Element, b: Element) =>
       a(b) == (
         if(a.name == b.name){
