@@ -26,9 +26,9 @@ Earth:
 
 Water:
   Creature:
-    - ?
-    - ?
-    - ?
+    - Jellyfish
+    - Octopus
+    - Lobster
   Sorcery:
     - ?
     - ?
