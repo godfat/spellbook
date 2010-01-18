@@ -14,62 +14,63 @@
 * implement maximum property (e.g. Health) via CreatureMap lookup
 * locale and translation
 
-Earth:
-  Creature:
-    - Slime (E)
-    - ?
-    - Golem (Eee)
-  Sorcery:
-    - ?
-    - ?
-    - ?
+Core-Set:
+  Earth:
+    Creature:
+      - Slime (E)
+      - ?
+      - Golem (Eee)
+    Sorcery:
+      - ?
+      - ?
+      - ?
 
-Water:
-  Creature:
-    - Jellyfish
-    - Octopus
-    - Lobster
-  Sorcery:
-    - ?
-    - ?
-    - ?
+  Water:
+    Creature:
+      - Jellyfish
+      - Octopus
+      - Lobster
+    Sorcery:
+      - ?
+      - ?
+      - ?
 
-Fire:
-  Creature:
-    - ?
-    - ?
-    - Dragon Whelp (Ffa)
-  Sorcery:
-    - ?
-    - Fireball (Ff)
-    - ?
+  Fire:
+    Creature:
+      - ?
+      - ?
+      - Dragon Whelp (Ffa)
+    Sorcery:
+      - ?
+      - Fireball (Ff)
+      - ?
 
-Air:
-  Creature:
-    - Sparrow (A)
-    - ?
-    - ?
-  Sorcery:
-    - ?
-    - ?
-    - ?
+  Air:
+    Creature:
+      - Sparrow (A)
+      - ?
+      - ?
+    Sorcery:
+      - ?
+      - ?
+      - ?
 
-Light:
-  Creature:
-    - ?
-    - ?
-    - ?
-  Sorcery:
-    - ?
-    - ?
-    - ?
+  Light:
+    Creature:
+      - ?
+      - ?
+      - ?
+    Sorcery:
+      - ?
+      - ?
+      - ?
 
-None:
-  Creature:
-    - Wisp
-    - ?
-    - ?
-  Sorcery:
-    - ?
-    - ?
-    - ?
+  None:
+    Creature:
+      - Wisp
+      - ?
+      - ?
+    Sorcery:
+      - ?
+      - ?
+      - ?
