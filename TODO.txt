@@ -17,9 +17,9 @@
 Core-Set:
   Earth:
     Creature:
-      - Rat (E)
-      - Rabbot (Ew)
-      - Cow (Eee)
+      - Rat (E)     Walking, Melee
+      - Rabbot (Ew) Walking, Melee
+      - Cow (Eea)   Walking, Melee
     Sorcery:
       - ?
       - ?
@@ -27,9 +27,9 @@ Core-Set:
 
   Water:
     Creature:
-      - Jellyfish (W)
-      - Octopus (Wf)
-      - Lobster (Www)
+      - Jellyfish (W) Walking, Swimming, Melee
+      - Octopus (Wf)  Walking, Swimming, Melee
+      - Lobster (Www) Walking, Swimming, Melee
     Sorcery:
       - ?
       - ?
@@ -37,19 +37,19 @@ Core-Set:
 
   Fire:
     Creature:
-      - Bug (F)
-      - Fox (Ff)
-      - ?
+      - Bug (F)     Walking, Melee
+      - Fox (Ff)    Walking, Melee
+      - Camel (Faa) Walking, Melee
     Sorcery:
       - ?
-      - Fireball (Ff)
+      - ?
       - ?
 
   Air:
     Creature:
-      - Sparrow (A)
-      - Dragonfly (Aaf)
-      - ?
+      - Sparrow (A)     Walking, Flying, Melee
+      - Bat (Ae)        Walking, Flying, Melee
+      - Dragonfly (Aaw) Walking, Flying, Melee
     Sorcery:
       - ?
       - ?
