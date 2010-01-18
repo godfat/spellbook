@@ -17,8 +17,69 @@
 Core-Set:
   Earth:
     Creature:
-      - Slime (E)
+      - Rat (E)
+      - Rabbot (Ew)
+      - Cow (Eee)
+    Sorcery:
       - ?
+      - ?
+      - ?
+
+  Water:
+    Creature:
+      - Jellyfish (W)
+      - Octopus (Wf)
+      - Lobster (Www)
+    Sorcery:
+      - ?
+      - ?
+      - ?
+
+  Fire:
+    Creature:
+      - Bug (F)
+      - Fox (Ff)
+      - ?
+    Sorcery:
+      - ?
+      - Fireball (Ff)
+      - ?
+
+  Air:
+    Creature:
+      - Sparrow (A)
+      - Dragonfly (Aaf)
+      - ?
+    Sorcery:
+      - ?
+      - ?
+      - ?
+
+  Light:
+    Creature:
+      - ?
+      - ?
+      - ?
+    Sorcery:
+      - ?
+      - ?
+      - ?
+
+  None:
+    Creature:
+      - ?
+      - ?
+      - ?
+    Sorcery:
+      - ?
+      - ?
+      - ?
+
+Core-Ext:
+  Earth:
+    Creature:
+      - Slime (E)
+      - Yeti (Ew)
       - Golem (Eee)
     Sorcery:
       - ?
@@ -27,9 +88,9 @@ Core-Set:
 
   Water:
     Creature:
-      - Jellyfish
-      - Octopus
-      - Lobster
+      - ?
+      - ?
+      - ?
     Sorcery:
       - ?
       - ?
@@ -47,7 +108,7 @@ Core-Set:
 
   Air:
     Creature:
-      - Sparrow (A)
+      - ?
       - ?
       - ?
     Sorcery:
