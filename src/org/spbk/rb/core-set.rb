@@ -1,6 +1,6 @@
 
 require 'scala-2.8.0.r20436-b20100111020117/lib/scala-library.jar'
-require 'build/lib/spellbook.jar'
+require 'build/lib/spellbook-core.jar'
 
 java_import 'scala.collection.immutable.List'
 %w[ Creature Fire State Health Mana Energy Vigor Strength Constitution

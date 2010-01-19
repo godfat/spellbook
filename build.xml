@@ -9,7 +9,7 @@
 
   <target name="package">
     <mkdir dir="${lib.build.dir}"/>
-    <jar destfile="${lib.build.dir}/spellbook.jar">
+    <jar destfile="${lib.build.dir}/spellbook-core.jar">
       <fileset dir="${cls.build.dir}"/>
     </jar>
   </target>
