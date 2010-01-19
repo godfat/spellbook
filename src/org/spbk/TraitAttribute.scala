@@ -1,5 +1,5 @@
 
-package org.godfat.sb
+package org.spbk
 
 trait TraitAttribute[T]{
   type This <: TraitAttribute[T]

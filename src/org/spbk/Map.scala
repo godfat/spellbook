@@ -1,5 +1,5 @@
 
-package org.godfat.sb
+package org.spbk
 
 import scala.collection.immutable.TreeMap
 import scala.collection.immutable.TreeSet

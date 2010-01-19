@@ -1,5 +1,5 @@
 
-package org.godfat.sb
+package org.spbk
 
 import prelude._
 

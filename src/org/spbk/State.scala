@@ -1,5 +1,5 @@
 
-package org.godfat.sb
+package org.spbk
 
 case class State( health: Health, mana: Mana, energy: Energy, vigor: Vigor,
                   strength: Strength, constitution: Constitution,

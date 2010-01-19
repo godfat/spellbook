@@ -1,5 +1,5 @@
 
-package org.godfat.sb
+package org.spbk
 
 abstract class Effect extends TraitAttribute[Effect]
 

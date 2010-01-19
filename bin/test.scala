@@ -5,8 +5,8 @@
 // type Path = List[Block]
 // type Map = List[Block]
 
-import org.godfat.sb._
-import org.godfat.sb.prelude._
+import org.spbk._
+import org.spbk.prelude._
 
 import scala.collection.immutable.TreeMap
 

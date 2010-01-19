@@ -1,5 +1,5 @@
 
-package org.godfat.sb
+package org.spbk
 
 sealed abstract class Property extends TraitAttribute[Property]
 

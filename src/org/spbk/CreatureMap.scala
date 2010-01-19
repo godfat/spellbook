@@ -1,9 +1,9 @@
 
-package org.godfat.sb
+package org
 
 import scala.collection.immutable.TreeMap
 
-package object sb{
+package object spbk{
   object Footman extends Creature( "Footman",
                                    List(Fire.Innate),
                                    State(Health(100), Mana(10), Energy(50), Vigor(50),

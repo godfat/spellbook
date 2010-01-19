@@ -1,5 +1,5 @@
 
-package org.godfat.sb
+package org.spbk
 
 package object prelude{
   type   Maybe[+A] = Option[A]

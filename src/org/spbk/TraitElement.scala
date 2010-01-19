@@ -1,5 +1,5 @@
 
-package org.godfat.sb
+package org.spbk
 
 trait TraitElement[T]{
   val create: Int => T            // abstract value

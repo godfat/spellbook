@@ -1,5 +1,5 @@
 
-package org.godfat.sb
+package org.spbk
 
 abstract class Buff
 case class Enrage() extends Buff
