@@ -1,5 +1,5 @@
 
-package org.godfat
+package org.godfat.sb
 
 import scala.collection.immutable.TreeMap
 
