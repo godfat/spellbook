@@ -2,7 +2,7 @@
 import org.scalacheck.Prop.forAll
 import org.scalacheck._
 
-import org.spbk._
+import org.spbk.pure._
 
 object CheckElement{
   val gen = Gen.oneOf(Earth.Innate, Earth.Acquired,

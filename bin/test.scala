@@ -5,7 +5,7 @@
 // type Path = List[Block]
 // type Map = List[Block]
 
-import org.spbk._
+import org.spbk.pure._
 import org.spbk.prelude._
 
 import scala.collection.immutable.TreeMap

@@ -1,5 +1,5 @@
 
-package org.spbk
+package org.spbk.pure
 
 object StateCreature extends State(Health(50), Mana(25), Energy(25), Vigor(25),
                                    Strength(25), Constitution(10), Imagination(25), Will(10),

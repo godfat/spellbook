@@ -1,5 +1,5 @@
 
-package org.spbk
+package org.spbk.pure
 
 trait TraitAttribute[T]{
   type This <: TraitAttribute[T]

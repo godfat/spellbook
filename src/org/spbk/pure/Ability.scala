@@ -1,7 +1,7 @@
 
-package org.spbk
+package org.spbk.pure
 
-import prelude._
+import org.spbk.prelude._
 
 abstract class Ability{
   def activate(map: Map, from: Block, to: Block): (Block, List[Block]) = {

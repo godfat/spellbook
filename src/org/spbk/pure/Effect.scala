@@ -1,5 +1,5 @@
 
-package org.spbk
+package org.spbk.pure
 
 abstract class Effect extends TraitAttribute[Effect]
 

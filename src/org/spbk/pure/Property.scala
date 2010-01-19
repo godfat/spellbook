@@ -1,5 +1,5 @@
 
-package org.spbk
+package org.spbk.pure
 
 sealed abstract class Property extends TraitAttribute[Property]
 

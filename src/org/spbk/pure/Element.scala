@@ -1,5 +1,5 @@
 
-package org.spbk
+package org.spbk.pure
 
 abstract class Element(val name: String){
   val pt: Int

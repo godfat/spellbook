@@ -1,5 +1,5 @@
 
-package org.spbk
+package org.spbk.pure
 
 case class State( health: Health, mana: Mana, energy: Energy, vigor: Vigor,
                   strength: Strength, constitution: Constitution,

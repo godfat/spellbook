@@ -1,5 +1,5 @@
 
-package org.spbk
+package org.spbk.pure
 
 trait TraitElement[T]{
   val create: Int => T            // abstract value

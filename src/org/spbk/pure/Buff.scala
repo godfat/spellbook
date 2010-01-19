@@ -1,5 +1,5 @@
 
-package org.spbk
+package org.spbk.pure
 
 abstract class Buff
 case class Enrage() extends Buff

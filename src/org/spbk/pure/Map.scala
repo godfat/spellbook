@@ -1,5 +1,5 @@
 
-package org.spbk
+package org.spbk.pure
 
 import scala.collection.immutable.TreeMap
 import scala.collection.immutable.TreeSet

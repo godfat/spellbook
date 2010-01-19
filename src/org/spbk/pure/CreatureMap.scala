@@ -1,9 +1,9 @@
 
-package org
+package org.spbk
 
 import scala.collection.immutable.TreeMap
 
-package object spbk{
+package object pure{
   object Footman extends Creature( "Footman",
                                    List(Fire.Innate),
                                    State(Health(100), Mana(10), Energy(50), Vigor(50),

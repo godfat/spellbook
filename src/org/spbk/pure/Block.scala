@@ -1,7 +1,7 @@
 
-package org.spbk
+package org.spbk.pure
 
-import prelude._
+import org.spbk.prelude._
 
 case class Block(val index: Int, val terrain: Terrain, val creature: Maybe[Creature]) extends Ordered[Block]
 {
