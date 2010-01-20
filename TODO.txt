@@ -18,7 +18,7 @@ Core-Set:
   Earth:
     Creature:
       - Rat (E)     Walking, Melee
-      - Rabbot (Ew) Walking, Melee
+      - Rabbit (Ew) Walking, Melee
       - Cow (Eea)   Walking, Melee
     Sorcery:
       - ?
