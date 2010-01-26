@@ -1,6 +1,11 @@
 
 == spellbook TODO list
 
+= survey
+ - Game Engine:    http://lwjgl.org/
+ - 2D Game Engine: http://slick.cokeandcode.com/
+ - GUI:            http://www.fenggui.org/
+
 * rename walk_over to ?
 * implement River, Lava, etc. specific terrain effect on put_on.
 * implement Power class, wrap a single output for Ability.
