@@ -26,9 +26,9 @@ Core-Set:
       - Rabbit (Ew) Walking, Melee
       - Cow (Eea)   Walking, Melee
     Sorcery:
-      - ?
-      - ?
-      - ?
+      - Clay (E)
+      - Earthquake (Ee)
+      - Meteor (Eef)
 
   Water:
     Creature:
@@ -36,9 +36,9 @@ Core-Set:
       - Octopus (Wf)  Walking, Swimming, Melee
       - Lobster (Www) Walking, Swimming, Melee
     Sorcery:
+      - Raining (W)
       - ?
-      - ?
-      - ?
+      - Hailstorm (Wwa)
 
   Fire:
     Creature:
@@ -46,9 +46,9 @@ Core-Set:
       - Fox (Ff)    Walking, Melee
       - Camel (Faa) Walking, Melee
     Sorcery:
-      - ?
-      - ?
-      - ?
+      - Heating (F)
+      - Burn (Ff)
+      -
 
   Air:
     Creature:
@@ -56,9 +56,9 @@ Core-Set:
       - Bat (Ae)        Walking, Flying, Melee
       - Dragonfly (Aaw) Walking, Flying, Melee
     Sorcery:
-      - ?
-      - ?
-      - ?
+      - Breeze (A)
+      -
+      - Thunderstorm (Aww)
 
   Light:
     Creature:
@@ -66,9 +66,9 @@ Core-Set:
       - ?
       - ?
     Sorcery:
-      - ?
-      - ?
-      - ?
+      - Moonlight (L)
+      - Rainbows (Lw)
+      -
 
   None:
     Creature:
@@ -97,8 +97,8 @@ Core-Ext:
       - ?
       - ?
     Sorcery:
-      - ?
-      - ?
+      - Aquaball
+      - Ice Spikes
       - ?
 
   Fire:
@@ -118,7 +118,7 @@ Core-Ext:
       - ?
     Sorcery:
       - ?
-      - ?
+      - Lightning Strike (Aa)
       - ?
 
   Light:
@@ -128,7 +128,7 @@ Core-Ext:
       - ?
     Sorcery:
       - ?
-      - ?
+      - Crepuscular Rays (Ll)
       - ?
 
   None:
