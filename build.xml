@@ -11,6 +11,7 @@
     <mkdir dir="${lib.build.dir}"/>
     <jar destfile="${lib.build.dir}/spellbook-core.jar">
       <fileset dir="${cls.build.dir}"/>
+      <fileset dir="${src.dir}" includes="**/*.rb"/>
     </jar>
   </target>
 
