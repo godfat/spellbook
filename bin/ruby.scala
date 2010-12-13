@@ -1,28 +1,20 @@
 
-import javax.script.ScriptContext
-import javax.script.ScriptEngine
-import javax.script.ScriptEngineManager
-import javax.script.ScriptException
-
 import org.spbk.pure._
 import org.spbk.prelude._
 
-val m = new ScriptEngineManager
-val jruby: ScriptEngine = m.getEngineByName("jruby")
+val jruby = new org.jruby.embed.ScriptingContainer
+// wait for jruby 1.6
+// jruby.setCompatVersion(org.jruby.CompatVersion.RUBY1_9);
 
-jruby.eval("require 'src/org/spbk/rb/core-set'")
+jruby.runScriptlet("require 'src/org/spbk/rb/spellbook'")
+jruby.runScriptlet("$input = 20")
 
-val context: ScriptContext = jruby.getContext
-context.setAttribute("input", "20", ScriptContext.ENGINE_SCOPE)
+println("20" == jruby.runScriptlet("$input").toString)
+println("85" == jruby.runScriptlet("$health").toString)
+println("10" == jruby.runScriptlet("RFootman.state.mana.pt").toString)
 
-println("20" == jruby.eval("$input", context).toString)
-println("85" == jruby.eval("$health", context).toString)
-println("10" == jruby.eval("RFootman.state.mana.pt", context).toString)
+println( "5" == jruby.runScriptlet("(RFootman - Mana.new(5)).state.mana.pt").toString)
+println(  5  == jruby.runScriptlet("(RFootman - Mana.new(5)).state.mana.pt").asInstanceOf[Long])
 
-println( "5" == jruby.eval("(RFootman - Mana.new(5)).state.mana.pt",
-                           context).toString)
-println(  5  == jruby.eval("(RFootman - Mana.new(5)).state.mana.pt",
-                           context).asInstanceOf[Long])
-
-val footman = jruby.eval("RFootman", context).asInstanceOf[Creature]
+val footman = jruby.runScriptlet("RFootman").asInstanceOf[Creature]
 println((footman - Mana(5)).skills == List(AttackMelee()))
