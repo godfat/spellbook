@@ -12,19 +12,18 @@ or should i just import them and write docs in Chinese?
 
 = install on mac
 
-# installing latest stable scala...
-> sudo port install scala
-
-# switch to latest development scala...
-> sudo sbaz setuniverse /opt/local/share/scala/misc/sbaz/descriptors/lamp-rc
-
-# install 2.8.0.Beta1-prerelease
-> sudo sbaz install scala
-> sudo sbaz install scala-library
-> sudo sbaz install scala-devel
+# install scala
+> brew install scala
 
 # install jruby
-> sudo port install jruby
+> brew install jruby
+
+# install ant
+> brew install ant
 
 # download scalacheck
+> wget http://scalacheck.googlecode.com/files/scalacheck_2.8.1-1.8.jar
+
 # download jruby-engine.jar
+> wget https://scripting.dev.java.net/files/documents/4957/37592/jsr223-engines.tar.gz
+> tar -zxf jsr223-engines.tar.gz jruby/build/jruby-engine.jar
