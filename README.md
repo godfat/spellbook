@@ -1,18 +1,26 @@
 
-spellbook
-==============
+[Spellbook](http://spbk.org)
+======================================
 
-this is an experiment to the models of spellbook,
-a game i designed years ago, but never implemented.
-it was based on Vantage Master(TM) from Falcom and
+This is an experiment to the models of spellbook,<br/>
+a game I designed years ago, but never implemented.<br/>
+It was based on Vantage Master(TM) from Falcom and<br/>
 Magic: the Gathering(TM) from Wizards of the Coast.
 
-i would import a few documents written before,
-after translating them from Chinese to English,
+I would import a few documents written before,<br/>
+after translating them from Chinese to English,<br/>
 or should i just import them and write docs in Chinese?
 
-installing on mac
-==============
+Dependency
+======================================
+
+* scala 2.8+
+* jruby 1.5+
+* ant
+* scalacheck
+
+Installing on mac
+======================================
 
 * install scala
 
@@ -32,6 +40,5 @@ installing on mac
 
 * download jruby-engine.jar
 
-  `wget https://scripting.dev.java.net/files/documents/4957/37592/jsr223-engines.tar.gz`
-
-  `tar -zxf jsr223-engines.tar.gz jruby/build/jruby-engine.jar`
+  <pre><code>wget https://scripting.dev.java.net/files/documents/4957/37592/jsr223-engines.tar.gz
+  tar -zxf jsr223-engines.tar.gz jruby/build/jruby-engine.jar</code></pre>
