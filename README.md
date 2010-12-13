@@ -2,7 +2,7 @@
 [Spellbook](http://spbk.org)
 ======================================
 
-This is an experiment to the models of spellbook,<br/>
+This is an experiment to the models of Spellbook,<br/>
 a game I designed years ago, but never implemented.<br/>
 It was based on Vantage Master(TM) from Falcom and<br/>
 Magic: the Gathering(TM) from Wizards of the Coast.
@@ -38,7 +38,7 @@ Installing on mac
 
   `wget http://scalacheck.googlecode.com/files/scalacheck_2.8.1-1.8.jar`
 
-Building spellbook
+Building Spellbook
 ======================================
 
 * spellbook-core
