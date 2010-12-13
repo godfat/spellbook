@@ -37,3 +37,18 @@ Installing on mac
 * download scalacheck
 
   `wget http://scalacheck.googlecode.com/files/scalacheck_2.8.1-1.8.jar`
+
+Running tests
+======================================
+
+* scalacheck
+
+  `./bin/check.sh`
+
+* plain old println test
+
+  `./bin/test.sh`
+
+* ruby to scala and scala to ruby test
+
+  `./bin/ruby.sh`
