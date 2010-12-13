@@ -1,15 +1,17 @@
 
-require '/opt/local/share/scala/lib/scala-library.jar'
+require '/usr/local/Cellar/scala/2.8.1/libexec/lib/scala-library.jar'
 require 'build/lib/spellbook-core.jar'
 
+require 'java'
 java_import 'scala.collection.immutable.List'
+
 %w[ Creature Fire State Health Mana Energy Vigor Strength Constitution
     Imagination Will Agility AttackMelee ].each{ |klass|
       java_import "org.spbk.pure.#{klass}"
     }
 
 def cons list, value
-  list.send(:'$colon$colon__method', value)
+  list.send(:'$colon$colon', value)
 end
 
 def array2list array
@@ -31,4 +33,6 @@ $footman = Creature.new("Footman", array2list([Fire.Innate]),
                           array2list([AttackMelee.new]),
                           List.empty)
 
-puts $footman.send(:'$minus', Health.new(15)).state.health.pt # 85
+$health = $footman.send(:'$minus', Health.new(15)).state.health.pt
+
+puts 85 == $health if $PROGRAM_NAME == 'src/org/spbk/rb/core-set.rb'

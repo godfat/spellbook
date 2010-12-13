@@ -11,4 +11,6 @@ jruby.eval("require 'src/org/spbk/rb/core-set'")
 
 val context: ScriptContext = jruby.getContext
 context.setAttribute("input", "20", ScriptContext.ENGINE_SCOPE)
-println(jruby.eval("$input", context))
+
+println("20" == jruby.eval("$input", context).toString)
+println("85" == jruby.eval("$health", context).toString)
