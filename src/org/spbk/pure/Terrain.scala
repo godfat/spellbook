@@ -14,10 +14,11 @@ abstract class Terrain( val     name: String        = "Terrain",
     (this - state.energy, creature + state.energy)
 }
 
-case class Road(val state: State = StateTerrain) extends Terrain("Road")
+case class Plains(val state: State = StateTerrain) extends
+  Terrain("Plains")
 {
-  type  This = Road
-  val create = Road(_)
+  type  This = Plains
+  val create = Plains(_)
 }
 
 case class Forest(val state: State = StateTerrain) extends
@@ -41,9 +42,9 @@ case class Lava(val state: State = StateTerrain) extends
   val create = Lava(_)
 }
 
-case class Plains(val state: State = StateTerrain) extends
-  Terrain("Plains", List(Air.Innate))
+case class Valley(val state: State = StateTerrain) extends
+  Terrain("Valley", List(Air.Innate))
 {
-  type  This = Plains
-  val create = Plains(_)
+  type  This = Valley
+  val create = Valley(_)
 }
