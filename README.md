@@ -4,8 +4,8 @@
 
 This is an experiment to the models of Spellbook,<br/>
 a game I designed years ago, but never implemented.<br/>
-It was based on Vantage Master(TM) from Falcom and<br/>
-Magic: the Gathering(TM) from Wizards of the Coast.
+It was based on Vantage Master&trade; from Falcom and<br/>
+Magic: the Gathering&trade; from Wizards of the Coast.
 
 I would import a few documents written before,<br/>
 after translating them from Chinese to English,<br/>
