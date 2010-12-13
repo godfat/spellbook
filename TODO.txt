@@ -1,6 +1,13 @@
 
 == spellbook TODO list
 
+= distribution
+
+core (jar) = ext0 (gem)
+ext1
+ext2
+ext3
+
 = survey
  - Game Engine:    http://lwjgl.org/
  - 2D Game Engine: http://slick.cokeandcode.com/
