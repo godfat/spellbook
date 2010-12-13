@@ -24,7 +24,7 @@ def array2list array
   }
 end
 
-$footman = Creature.new("Footman", array2list([Fire.innate]),
+RFootman = Creature.new("RFootman", array2list([Fire.innate]),
                         State.new(Health.new(100),
                                   Mana.new(10),
                                   Energy.new(50),
@@ -37,6 +37,6 @@ $footman = Creature.new("Footman", array2list([Fire.innate]),
                           array2list([AttackMelee]),
                           List.empty)
 
-$health = $footman.send(:'$minus', Health.new(15)).state.health.pt
+$health = RFootman.send(:'$minus', Health.new(15)).state.health.pt
 
 puts 85 == $health if $PROGRAM_NAME == 'src/org/spbk/rb/core-set.rb'
