@@ -34,7 +34,7 @@ RFootman = Creature.new("RFootman", array2list([Fire.innate]),
                                   Imagination.new(10),
                                   Will.new(10),
                                   Agility.new(15)),
-                          array2list([AttackMelee]),
+                          array2list([AttackMelee.new]),
                           List.empty)
 
 class << RFootman

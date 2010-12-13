@@ -4,6 +4,9 @@ import javax.script.ScriptEngine
 import javax.script.ScriptEngineManager
 import javax.script.ScriptException
 
+import org.spbk.pure._
+import org.spbk.prelude._
+
 val m = new ScriptEngineManager
 val jruby: ScriptEngine = m.getEngineByName("jruby")
 
@@ -20,3 +23,6 @@ println( "5" == jruby.eval("(RFootman - Mana.new(5)).state.mana.pt",
                            context).toString)
 println(  5  == jruby.eval("(RFootman - Mana.new(5)).state.mana.pt",
                            context).asInstanceOf[Long])
+
+val footman = jruby.eval("RFootman", context).asInstanceOf[Creature]
+println((footman - Mana(5)).skills == List(AttackMelee()))
