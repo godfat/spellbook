@@ -5,11 +5,11 @@ import org.scalacheck._
 import org.spbk.pure._
 
 object CheckElement extends Properties("Element"){
-  val gen = Gen.oneOf(Earth.Innate, Earth.Acquired,
-                      Water.Innate, Water.Acquired,
-                       Fire.Innate,  Fire.Acquired,
-                        Air.Innate,   Air.Acquired,
-                      Light.Innate, Light.Acquired)
+  val gen = Gen.oneOf(Earth.innate, Earth.acquired,
+                      Water.innate, Water.acquired,
+                       Fire.innate,  Fire.acquired,
+                        Air.innate,   Air.acquired,
+                      Light.innate, Light.acquired)
 
   implicit def arbEle: Arbitrary[Element] = Arbitrary(gen)
 

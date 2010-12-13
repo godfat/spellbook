@@ -20,7 +20,7 @@ def array2list array
   }
 end
 
-$footman = Creature.new("Footman", array2list([Fire.Innate]),
+$footman = Creature.new("Footman", array2list([Fire.innate]),
                         State.new(Health.new(100),
                                   Mana.new(10),
                                   Energy.new(50),

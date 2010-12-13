@@ -10,7 +10,7 @@ import org.spbk.prelude._
 
 import scala.collection.immutable.TreeMap
 
-println(Fire.Innate(Water.Innate) == Ampify(-200)) // Ampify(-200)
+println(Fire.innate(Water.innate) == Ampify(-200)) // Ampify(-200)
 println(Footman.name == "Footman") // Footman
 println((Footman - Health(10)).state.health == Health(90)) // Health(90)
 println(Footman.state.health - Health(5) == Health(95)) // Health(95)
