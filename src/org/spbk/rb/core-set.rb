@@ -6,8 +6,12 @@ require 'java'
 java_import 'scala.collection.immutable.List'
 
 %w[ Creature Fire State Health Mana Energy Vigor Strength Constitution
-    Imagination Will Agility AttackMelee ].each{ |klass|
+    Imagination Will Agility ].each{ |klass|
       java_import "org.spbk.pure.#{klass}"
+    }
+
+%w[ Footman AttackMelee ].each{ |klass|
+      java_import "org.spbk.prelude.#{klass}"
     }
 
 def cons list, value
@@ -30,7 +34,7 @@ $footman = Creature.new("Footman", array2list([Fire.innate]),
                                   Imagination.new(10),
                                   Will.new(10),
                                   Agility.new(15)),
-                          array2list([AttackMelee.new]),
+                          array2list([AttackMelee]),
                           List.empty)
 
 $health = $footman.send(:'$minus', Health.new(15)).state.health.pt

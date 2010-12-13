@@ -3,7 +3,7 @@ package org.spbk.pure
 
 import org.spbk.prelude._
 
-abstract class Ability{
+abstract class Skill{
   def activate(map: Map, from: Block, to: Block): (Block, List[Block]) = {
     (consume(from), select(map, to).map(apply(from, _)))
   }
@@ -13,7 +13,7 @@ abstract class Ability{
   def   apply(from: Block, to: Block): Block = to
 }
 
-abstract class AbilitySimple[Cost <: Property, Damage <: Property] extends Ability{
+abstract class SkillSimple[Cost <: Property, Damage <: Property] extends Skill{
   def   cost(fc: Creature): Cost
   def damage(fc: Creature, tc: Creature): Damage
 
@@ -29,19 +29,3 @@ abstract class AbilitySimple[Cost <: Property, Damage <: Property] extends Abili
     case _                 => error("missing creature(s)")
   }
 }
-
-trait AbilityActive  extends Ability
-trait AbilityPassive extends Ability
-
-case class Move()    extends AbilityActive
-case class Wait()    extends AbilityActive
-
-case class AttackMelee() extends AbilitySimple[Vigor, Health] with AbilityActive{
-  override def   cost(fc: Creature) = Vigor(10)
-  override def damage(fc: Creature, tc: Creature) =
-    Health(fc.state.strength.pt - tc.state.constitution.pt)
-}
-
-case class AttackRanged() extends AbilityActive
-
-case class Swimming()     extends AbilityPassive

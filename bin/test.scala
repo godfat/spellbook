@@ -23,7 +23,7 @@ val from = Block(0, River(), Just(Footman))
 val to   = Block(1, River(), Just(Footman))
 val map  = Map(2, 1, TreeMap(0 -> from, 1 -> to))
 
-val (bb, lb) = AttackMelee().activate(map, from, to)
+val (bb, lb) = AttackMelee.activate(map, from, to)
 println((bb.creature.get.state.vigor, lb.head.creature.get.state.health) == (Vigor(40),Health(80))) // (Vigor(40),Health(80))
 
 val map2 = Map.create(5, 5, Block(_, River(), Nothing))
