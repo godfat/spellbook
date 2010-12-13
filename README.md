@@ -38,6 +38,13 @@ Installing on mac
 
   `wget http://scalacheck.googlecode.com/files/scalacheck_2.8.1-1.8.jar`
 
+Building spellbook
+======================================
+
+* spellbook-core
+
+  `ant`
+
 Running tests
 ======================================
 
