@@ -37,8 +37,3 @@ Installing on mac
 * download scalacheck
 
   `wget http://scalacheck.googlecode.com/files/scalacheck_2.8.1-1.8.jar`
-
-* download jruby-engine.jar
-
-  <pre><code>wget https://scripting.dev.java.net/files/documents/4957/37592/jsr223-engines.tar.gz
-  tar -zxf jsr223-engines.tar.gz jruby/build/jruby-engine.jar</code></pre>
