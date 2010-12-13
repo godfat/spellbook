@@ -19,7 +19,7 @@ Dependency
 * ant
 * scalacheck
 
-Installing on mac
+Installing on Mac
 ======================================
 
 * install scala
