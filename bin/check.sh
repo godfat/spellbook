@@ -1,5 +1,5 @@
 #!/bin/sh
 
 scala -deprecation -cp \
-build/lib/spellbook-core.jar:scalacheck_2.8.0.Beta1-RC5-1.7-SNAPSHOT.jar \
+build/lib/spellbook-core.jar:scalacheck_2.8.1-1.8.jar \
 bin/check.scala
