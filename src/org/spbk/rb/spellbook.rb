@@ -36,4 +36,4 @@ require 'spellbook/core/creature/footman'
 
 $health = (RFootman - Health.new(15)).state.health.pt
 
-puts 85 == $health if $PROGRAM_NAME == 'src/org/spbk/rb/core-set.rb'
+puts 85 == $health if $PROGRAM_NAME == 'src/org/spbk/rb/spellbook.rb'
