@@ -15,3 +15,8 @@ context.setAttribute("input", "20", ScriptContext.ENGINE_SCOPE)
 println("20" == jruby.eval("$input", context).toString)
 println("85" == jruby.eval("$health", context).toString)
 println("10" == jruby.eval("RFootman.state.mana.pt", context).toString)
+
+println( "5" == jruby.eval("(RFootman - Mana.new(5)).state.mana.pt",
+                           context).toString)
+println(  5  == jruby.eval("(RFootman - Mana.new(5)).state.mana.pt",
+                           context).asInstanceOf[Long])

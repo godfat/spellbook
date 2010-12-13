@@ -37,6 +37,10 @@ RFootman = Creature.new("RFootman", array2list([Fire.innate]),
                           array2list([AttackMelee]),
                           List.empty)
 
-$health = RFootman.send(:'$minus', Health.new(15)).state.health.pt
+class << RFootman
+  alias_method :-, :'$minus'
+end
+
+$health = (RFootman - Health.new(15)).state.health.pt
 
 puts 85 == $health if $PROGRAM_NAME == 'src/org/spbk/rb/core-set.rb'
