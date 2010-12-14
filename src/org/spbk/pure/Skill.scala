@@ -4,9 +4,10 @@ package org.spbk.pure
 import org.spbk.prelude._
 
 abstract class Skill{
-  def activate(map: Map, from: Block, to: Block): (Block, List[Block]) = {
+  def activate(map: Map, from: Block, to: Block): (Block, List[Block]) =
     (consume(from), select(map, to).map(apply(from, _)))
-  }
+
+  // def apply(context: Context, sub: Creature, obj: Block): Action
 
   def consume(from: Block): Block = from
   def  select(map: Map, to: Block): List[Block] = List(to)
