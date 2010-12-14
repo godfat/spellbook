@@ -1,5 +1,5 @@
 
-RFootman = Creature.new("RFootman", Spbk.array2list([Fire.innate]),
+Footman = Creature.new("Footman", Spbk.array2list([Fire.innate]),
                         State.new(Health.new(100),
                                   Mana.new(10),
                                   Energy.new(50),
@@ -12,6 +12,6 @@ RFootman = Creature.new("RFootman", Spbk.array2list([Fire.innate]),
                           Spbk.array2list([AttackMelee.new]),
                           List.empty)
 
-class << RFootman
+class << Footman
   alias_method :-, :'$minus'
 end

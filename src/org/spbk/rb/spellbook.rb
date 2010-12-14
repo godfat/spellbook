@@ -13,7 +13,8 @@ java_import 'scala.collection.immutable.List'
       java_import "org.spbk.pure.#{klass}"
     }
 
-%w[ Footman AttackMelee ].each{ |klass|
+# Footman
+%w[ AttackMelee ].each{ |klass|
       java_import "org.spbk.prelude.#{klass}"
     }
 
@@ -34,6 +35,6 @@ Spbk = Spellbook
 
 require 'spellbook/core/creature/footman'
 
-$health = (RFootman - Health.new(15)).state.health.pt
+$health = (Footman - Health.new(15)).state.health.pt
 
 puts 85 == $health if $PROGRAM_NAME == 'src/org/spbk/rb/spellbook.rb'
