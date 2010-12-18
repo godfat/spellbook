@@ -34,6 +34,9 @@ class MeleeAttack < Skill
   end
 
   def damage str, con
+    # www.timotheegroleau.com/Flash/experiments/easing_function_generator.htm
+    # http://en.wikipedia.org/wiki/Box–Muller_transform
+    # http://www.madeinflex.com/img/entries/2007/05/customeasingexplorer.html
     [str, (str*2 - con) * (1 - Math.exp(-0.05 - (str*2 - con)*0.05))].min
   end
 end
@@ -80,7 +83,7 @@ class Trample < Ability
       nearbys = action.map.nearby(1, action.subject_index)
       total_damage = action.effects.sum{ |effect|
                        if   effect.kind_of?(Reduce) &&
-                            effect.kind.kind_of(Health)
+                            effect.kind.kind_of?(Health)
                          effect.pt
                        else
                          0
