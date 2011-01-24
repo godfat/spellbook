@@ -9,7 +9,7 @@ require 'build/lib/spellbook-core.jar'
 java_import 'scala.collection.immutable.List'
 
 %w[ Creature Fire State Health Mana Energy Vigor Strength Constitution
-    Imagination Will Agility ].each{ |klass|
+    Imagination Will Agility Property Unit ].each{ |klass|
       java_import "org.spbk.pure.#{klass}"
     }
 

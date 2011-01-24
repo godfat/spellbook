@@ -1,4 +1,14 @@
 
+class Property
+  alias_method :+, :'$plus'
+  alias_method :-, :'$minus'
+end
+
+class Unit
+  alias_method :+, :'$plus'
+  alias_method :-, :'$minus'
+end
+
 Footman = Creature.new("Footman", [Fire.innate].to_list,
                         State.new(Health.new(100),
                                   Mana.new(10),
@@ -12,6 +22,3 @@ Footman = Creature.new("Footman", [Fire.innate].to_list,
                           [FreeMelee.new].to_list,
                           List.empty)
 
-class << Footman
-  alias_method :-, :'$minus'
-end
