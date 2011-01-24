@@ -13,7 +13,7 @@ or should i just import them and write docs in Chinese?
 [falcom]:  http://en.wikipedia.org/wiki/Nihon_Falcom
 [WotC]:    http://en.wikipedia.org/wiki/Wizards_of_the_Coast
 
-# Reference
+# Design Reference
 
 * [Vantage Master][VM]
 * [VM Japan][VMJ]
@@ -25,7 +25,7 @@ or should i just import them and write docs in Chinese?
 [MTG]:     http://en.wikipedia.org/wiki/Magic:_The_Gathering
 [Wesnoth]: http://en.wikipedia.org/wiki/The_Battle_for_Wesnoth
 
-# Dependency
+# Runtime/Development Dependency
 
 * [Scala][] 2.8+ [&#8690;][d-scala]
 * [JRuby][] 1.5+ [&#8690;][d-jruby]
