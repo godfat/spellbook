@@ -18,3 +18,7 @@ println(  5  == jruby.runScriptlet("(Footman - Mana.new(5)).state.mana.pt").asIn
 
 val footman = jruby.runScriptlet("Footman").asInstanceOf[Creature]
 println((footman - Mana(5)).skills == List(AttackMelee()))
+
+val v = jruby.runScriptlet("FreeMelee.new")
+println(jruby.runScriptlet("FreeMelee.new.cost(Footman)"))
+println(v.asInstanceOf[AttackMelee].cost(footman))
