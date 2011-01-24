@@ -42,6 +42,8 @@ or should i just import them and write docs in Chinese?
 [d-ant]:   http://ant.apache.org/bindownload.cgi
 [d-scheck]:http://code.google.com/p/scalacheck/downloads/list
 
+# Installing on Windows
+
 # Installing on Mac
 
 * install scala
@@ -59,6 +61,8 @@ or should i just import them and write docs in Chinese?
 * download scalacheck
 
   `wget http://scalacheck.googlecode.com/files/scalacheck_2.8.1-1.8.jar`
+
+# Installing on Arch (Linux)
 
 # Building Spellbook
 
