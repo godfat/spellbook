@@ -6,7 +6,8 @@ object StateUnit extends State(Health(0), Mana(0), Energy(0), Vigor(0),
                                Imagination(0), Will(0),
                                Agility(0))
 
-abstract class Unit
+abstract class Unit()//val  features: List[Feature],
+                    //val abilities: List[Ability])
 {
   type This <: Unit
   val create: State => This

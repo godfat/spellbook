@@ -12,6 +12,10 @@ end
 class FreeMelee < AttackMelee
   def cost c
     super - Vigor.new(7)
+    Vigor.new(1)
+  end
+  def test
+    5
   end
 end
 
