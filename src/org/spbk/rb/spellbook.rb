@@ -18,20 +18,13 @@ java_import 'scala.collection.immutable.List'
       java_import "org.spbk.prelude.#{klass}"
     }
 
-module Spellbook
-  module_function
-  def cons list, value
-    list.send(:'$colon$colon', value)
-  end
-
-  def array2list array
-    array.reverse.inject(List.empty){ |r, i|
-      cons(r, i)
+class Array
+  def to_list
+    reverse.inject(List.empty){ |list, value|
+      list.send(:'$colon$colon', value)
     }
   end
 end
-
-Spbk = Spellbook
 
 require 'spellbook/core/creature/footman'
 

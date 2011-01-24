@@ -1,5 +1,5 @@
 
-Footman = Creature.new("Footman", Spbk.array2list([Fire.innate]),
+Footman = Creature.new("Footman", [Fire.innate].to_list,
                         State.new(Health.new(100),
                                   Mana.new(10),
                                   Energy.new(50),
@@ -9,7 +9,7 @@ Footman = Creature.new("Footman", Spbk.array2list([Fire.innate]),
                                   Imagination.new(10),
                                   Will.new(10),
                                   Agility.new(15)),
-                          Spbk.array2list([AttackMelee.new]),
+                          [FreeMelee.new].to_list,
                           List.empty)
 
 class << Footman
