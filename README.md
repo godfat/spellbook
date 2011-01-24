@@ -44,6 +44,10 @@ or should i just import them and write docs in Chinese?
 
 # Installing on Windows
 
+* build spellbook
+
+  `ant`
+
 # Installing on Mac
 
 * install scala
@@ -62,11 +66,13 @@ or should i just import them and write docs in Chinese?
 
   `wget http://scalacheck.googlecode.com/files/scalacheck_2.8.1-1.8.jar`
 
+* build spellbook
+
+  `ant`
+
 # Installing on Arch (Linux)
 
-# Building Spellbook
-
-* spellbook-core
+* build spellbook
 
   `ant`
 
