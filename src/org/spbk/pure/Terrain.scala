@@ -2,7 +2,8 @@
 package org.spbk.pure
 
 object StateTerrain extends State(Health(999), Mana(0), Energy(0), Vigor(0),
-                                  Strength(0), Constitution(99), Imagination(0), Will(99),
+                                  Strength(0), Constitution(99),
+                                  Imagination(0), Will(99),
                                   Agility(0))
 
 abstract class Terrain( val     name: String        = "Terrain",
