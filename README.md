@@ -1,6 +1,5 @@
 
-[Spellbook](http://spbk.org)
-======================================
+# [Spellbook](http://spbk.org)
 
 This is an experiment to the models of Spellbook,<br/>
 a game I designed years ago, but never implemented.<br/>
@@ -11,16 +10,14 @@ I would import a few documents written before,<br/>
 after translating them from Chinese to English,<br/>
 or should i just import them and write docs in Chinese?
 
-Dependency
-======================================
+# Dependency
 
 * scala 2.8+
 * jruby 1.5+
 * ant
 * scalacheck
 
-Installing on Mac
-======================================
+# Installing on Mac
 
 * install scala
 
@@ -38,15 +35,13 @@ Installing on Mac
 
   `wget http://scalacheck.googlecode.com/files/scalacheck_2.8.1-1.8.jar`
 
-Building Spellbook
-======================================
+# Building Spellbook
 
 * spellbook-core
 
   `ant`
 
-Running tests
-======================================
+# Running tests
 
 * scalacheck
 
