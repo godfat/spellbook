@@ -58,10 +58,6 @@ or should i just import them and write docs in Chinese?
 
   `brew install jruby`
 
-* install ant
-
-  `brew install ant`
-
 * download scalacheck
 
   `wget http://scalacheck.googlecode.com/files/scalacheck_2.8.1-1.8.jar`
