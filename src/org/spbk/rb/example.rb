@@ -55,9 +55,14 @@ class Enrage < Feature
   end
 end
 
+class Move < Skill
+  def apply
+  end
+end
+
 # how to implement this? flying is a feature to ignore ZoC (Zone of Control)
 class Flying < Feature
-  def apply context
+  def target context
     return context
   end
 end
