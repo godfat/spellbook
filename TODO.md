@@ -1,7 +1,7 @@
 
-== spellbook TODO list
+# spellbook TODO list
 
-= flow
+## flow
 
 0. upkeep phase
 1. player select skill
@@ -13,17 +13,20 @@
 7. apply the action (effects)
 8. end of turn
 
-= distribution
+# distribution
 
-core (jar) = ext0 (gem)
-ext1
-ext2
-ext3
+- core (jar) = ext0 (gem)
+- ext1
+- ext2
+- ext3
 
-= survey
- - Game Engine:    http://lwjgl.org/
- - 2D Game Engine: http://slick.cokeandcode.com/
- - GUI:            http://www.fenggui.org/
+# libraries
+
+-    [Game Engine](http://lwjgl.org/)
+- [2D Game Engine](http://slick.cokeandcode.com/)
+-            [GUI](http://www.fenggui.org/)
+
+# others
 
 * rename walk_over to ?
 * implement River, Lava, etc. specific terrain effect on put_on.
@@ -31,131 +34,133 @@ ext3
 * implement AbilityActiveSimple, to ease implementing
   simple ability like MeleeAttack, RangedAttack, etc.
   let you write something like...
-  case class MeleeAttack() extends AbilityActiveSimple(
-    Strength, Constitution, Health, Range(1), AoE(0)
-  )
+
+      case class MeleeAttack() extends AbilityActiveSimple(
+        Strength, Constitution, Health, Range(1), AoE(0)
+      )
+
 * implement elements effect.
 * implement maximum property (e.g. Health) via CreatureMap lookup
 * locale and translation
 
-Core-Set:
-  Earth:
-    Creature:
+* Core-Set:
+  - Earth:
+    - Creature:
       - Rat (E)     Walking, Melee
       - Rabbit (Ew) Walking, Melee
       - Cow (Eea)   Walking, Melee
-    Sorcery:
+    - Sorcery:
       - Clay (E)
       - Earthquake (Ee)
       - Meteor (Eef)
 
-  Water:
-    Creature:
+  - Water:
+    - Creature:
       - Jellyfish (W) Walking, Swimming, Melee
       - Octopus (Wf)  Walking, Swimming, Melee
       - Lobster (Www) Walking, Swimming, Melee
-    Sorcery:
+    - Sorcery:
       - Raining (W)
       - ?
       - Hailstorm (Wwa)
 
-  Fire:
-    Creature:
+  - Fire:
+    - Creature:
       - Bug (F)     Walking, Melee
       - Fox (Ff)    Walking, Melee
       - Camel (Faa) Walking, Melee
-    Sorcery:
+    - Sorcery:
       - Heating (F)
       - Burn (Ff)
-      -
+      - ?
 
-  Air:
-    Creature:
+  - Air:
+    - Creature:
       - Sparrow (A)     Walking, Flying, Melee
       - Bat (Ae)        Walking, Flying, Melee
       - Dragonfly (Aaw) Walking, Flying, Melee
-    Sorcery:
+    - Sorcery:
       - Breeze (A)
-      -
+      - ?
       - Thunderstorm (Aww)
 
-  Light:
-    Creature:
+  - Light:
+    - Creature:
       - ?
       - ?
       - ?
-    Sorcery:
+    - Sorcery:
       - Moonlight (L)
       - Rainbows (Lw)
-      -
-
-  None:
-    Creature:
-      - ?
-      - ?
-      - ?
-    Sorcery:
-      - ?
-      - ?
       - ?
 
-Core-Ext:
-  Earth:
-    Creature:
+  - None:
+    - Creature:
+      - ?
+      - ?
+      - ?
+    - Sorcery:
+      - ?
+      - ?
+      - ?
+
+* Core-Ext:
+  - Earth:
+    - Creature:
       - Slime (E)
       - Yeti (Ew)
       - Golem (Eee)
-    Sorcery:
+    - Sorcery:
       - ?
       - ?
       - ?
 
-  Water:
-    Creature:
+  - Water:
+    - Creature:
       - ?
       - ?
       - ?
-    Sorcery:
+    - Sorcery:
       - Aquaball
       - Ice Spikes
       - ?
 
-  Fire:
-    Creature:
+  - Fire:
+    - Creature:
       - ?
       - ?
       - Dragon Whelp (Ffa)
-    Sorcery:
+    - Sorcery:
       - ?
       - Fireball (Ff)
       - ?
 
-  Air:
-    Creature:
+  - Air:
+    - Creature:
       - ?
       - ?
       - ?
-    Sorcery:
+    - Sorcery:
       - ?
       - Lightning Strike (Aa)
       - ?
 
-  Light:
-    Creature:
+  - Light:
+    - Creature:
       - ?
       - ?
       - ?
-    Sorcery:
+    - Sorcery:
       - ?
       - Crepuscular Rays (Ll)
       - ?
 
-  None:
-    Creature:
+  - None:
+    - Creature:
       - Wisp
       - ?
       - ?
-    Sorcery:
+    - Sorcery:
       - ?
       - ?
       - ?
