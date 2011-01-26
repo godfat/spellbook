@@ -1,7 +1,10 @@
 
 # example definition of a creature, this is a pseudo code, don't run it
 
-# Ability#apply :: [Effect] -> [Effect]
+# Feature#upkeep :: Context -> Context
+# Feature#apply :: Context -> Context
+#   Skill#apply :: Context -> Action
+# Ability#apply ::  Action -> Action
 
                             # name
 DragonTyrant = Creature.new("Dragon Tyrant",

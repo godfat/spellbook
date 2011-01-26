@@ -1,6 +1,18 @@
 
 == spellbook TODO list
 
+= flow
+
+0. upkeep phase
+1. player select skill
+2. use targeting features to filter context (restore context afterwards)
+3. player select target
+4. use action feature to filter context
+5. use player selected skill to create action (effects)
+6. use ability to update action (effects)
+7. apply the action (effects)
+8. end of turn
+
 = distribution
 
 core (jar) = ext0 (gem)
