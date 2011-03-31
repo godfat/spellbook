@@ -32,4 +32,4 @@ Footman = Creature.new("Footman", [Fire.innate].to_list,
                           [FreeMelee.new].to_list,
                           List.empty)
 
-p FreeMelee.new.cost(Footman).pt
+p FreeMelee.new.cost(Footman).pt == 1
