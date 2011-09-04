@@ -48,6 +48,10 @@ or should i just import them and write docs in Chinese?
 
   `ant`
 
+  or
+
+  `sbt package`
+
 # Installing on Mac
 
 * install scala
@@ -66,11 +70,19 @@ or should i just import them and write docs in Chinese?
 
   `ant`
 
+  or
+
+  `sbt package`
+
 # Installing on Arch (Linux)
 
 * build spellbook
 
   `ant`
+
+  or
+
+  `sbt package`
 
 # Running tests
 
