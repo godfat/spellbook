@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="spellbook" default="build" basedir=".">
   <description>this is an experiment to the models of spellbook</description>
-  <property name="scala.dir" location="/usr/local/Cellar/scala/2.8.1/libexec"/>
+  <property name="scala.dir" location="/usr/local/Cellar/scala/2.9.1/libexec"/>
 
   <target name="rebuild" depends="clean,build"/>
   <target name=  "build" depends="compile,package"/>
@@ -17,10 +17,10 @@
 
   <target name="compile">
     <mkdir dir="${cls.build.dir}"/>
-    <fsc srcdir="${src.dir}" destdir="${cls.build.dir}" classpathref="project.classpath"
-         force="never" deprecation="yes" unchecked="yes">
+    <scalac srcdir="${src.dir}" destdir="${cls.build.dir}" classpathref="project.classpath"
+            deprecation="yes" unchecked="yes">
       <include name="**/*.scala"/>
-    </fsc>
+    </scalac>
   </target>
 
 

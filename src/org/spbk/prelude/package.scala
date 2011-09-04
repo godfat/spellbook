@@ -1,7 +1,7 @@
 
 package org.spbk
 
-package object prelude{
+package object prelude {
   type   Maybe[+A] = Option[A]
   type    Just[+A] =   Some[A]
    val    Just     =   Some
