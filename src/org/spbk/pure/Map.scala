@@ -7,7 +7,7 @@ import scala.collection.immutable.TreeSet
 case class Map(val width: Int, val height: Int, val blocks: TreeMap[Int, Block]){
   def nearby(index: Int, step: Int = 1): List[Block] = blocks.get(index) match{
     case Some(b: Block) => bfs(List((step, b)))
-    case None           => error("invalid block index: " + index.toString)
+    case None           => sys.error("invalid block index: " + index.toString)
   }
 
   def      left (b: Block): Option[Block] = blocks.get(      left_index(b.index))

@@ -15,6 +15,6 @@ case class Block(val index: Int, val terrain: Terrain, val creature: Maybe[Creat
     }
 
     case Just(current_creature: Creature) =>
-      error("already got a creature there: " + current_creature.toString)
+      sys.error("already got a creature there: " + current_creature.toString)
   }
 }
