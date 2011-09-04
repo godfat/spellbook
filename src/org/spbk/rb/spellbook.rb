@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(File.expand_path("#{__FILE__}/..")).uniq!
 
 require 'java'
 
-require '/usr/local/Cellar/scala/2.8.1/libexec/lib/scala-library.jar'
+require '/usr/local/Cellar/scala/2.9.1/libexec/lib/scala-library.jar'
 require './build/lib/spellbook-core.jar'
 
 java_import 'scala.collection.immutable.List'
