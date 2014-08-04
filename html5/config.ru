@@ -25,11 +25,35 @@ Sec-WebSocket-Accept: #{accept}\r
       sock
     end
 
+    def up width, idx
+      idx - width
+    end
+    def left_up width, idx
+      if idx % 2 == 0 then idx else up(width, idx) end - 1
+    end
+    def right_up width, idx
+      if idx % 2 == 0 then idx else up(width, idx) end + 1
+    end
+    def down width, idx
+      idx + width
+    end
+    def left_down width, idx
+      if idx % 2 == 0 then down(width, idx) else idx end - 1
+    end
+    def right_down width, idx
+      if idx % 2 == 0 then down(width, idx) else idx end + 1
+    end
+    def nearby width, idx
+      %i[left_up up right_up right_down down left_down].map do |direct|
+        send(direct, width, idx)
+      end
+    end
+
     def create_ws sock
       parser = WebSocket::Parser.new
       parser.on_message do |msg|
         puts "on_message: #{msg}"
-        sock << WebSocket::Message.new(msg).to_data
+        write(sock, nearby(*msg.scan(/\d+/).map(&:to_i)).join(' '))
       end
 
       parser.on_error do |e|
@@ -48,6 +72,11 @@ Sec-WebSocket-Accept: #{accept}\r
       end
 
       parser
+    end
+
+    def write sock, msg
+      puts "write: #{msg}"
+      sock << WebSocket::Message.new(msg).to_data
     end
 
     def start sock, ws

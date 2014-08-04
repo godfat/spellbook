@@ -6,29 +6,6 @@
 
 prelude = require 'prelude-ls'
 
-createws = ->
-  ws = new WebSocket "ws://#{location.host}#{location.pathname}ws"
-
-  send = (msg) ->
-    console.log "send: #{msg}"
-    ws.send msg
-
-  ws.onopen = ->
-    console.log "onopen"
-    send "Hi"
-
-  ws.onmessage = (msg) ->
-    console.log "onmessage: #{msg.data}"
-
-  ws.onerror = (e) ->
-    console.log "onerror: #{e}"
-
-  ws.onclose = ->
-    console.log "onclose"
-    createws!
-
-createws!
-
 settings =
   width: 16
   height: 10
@@ -77,10 +54,34 @@ nearby = (s, idx) -> [left-up(s, idx), up(s, idx), right-up(s, idx),
 
 renderer = new PIXI.WebGLRenderer 800, 580
 [stage, tiles] = generate settings, (s, idx) ->
-  indices = nearby(s, idx)
-  console.log indices
-  indices `prelude.flip(prelude.each)` (i) ->
-    tiles[i]?.tint += 0x123456
+  send "nearby: #{s.width} #{idx}"
+
+createws = ->
+  ws = new WebSocket "ws://#{location.host}#{location.pathname}ws"
+
+  ws.onopen = ->
+    console.log "onopen"
+
+  ws.onmessage = (msg) ->
+    console.log "onmessage: #{msg.data}"
+    indices = prelude.split ' ', msg.data
+    console.log indices
+    indices `prelude.flip(prelude.each)` (i) ->
+      tiles[parseInt(i)]?.tint += 0x123456
+
+  ws.onerror = (e) ->
+    console.log "onerror: #{e}"
+
+  ws.onclose = ->
+    console.log "onclose"
+    createws! # how do we reconnect?
+
+  ws
+
+ws = createws!
+send = (msg) ->
+  console.log "send: #{msg}"
+  ws.send msg
 
 document.body.appendChild renderer.view
 
