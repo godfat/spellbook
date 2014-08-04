@@ -1,5 +1,9 @@
 'use strict'
 
+# http://www.goodboydigital.com/pixijs/docs/
+# http://livescript.net/
+# http://www.preludels.com/
+
 prelude = require 'prelude-ls'
 
 createws = ->
