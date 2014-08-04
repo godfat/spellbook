@@ -79,7 +79,7 @@ Sec-WebSocket-Accept: #{accept}\r
     body render('error' => {'name' => name, 'message' => message})
   end
 
-  get '/ws' do
+  get %r{^/{1,}ws$} do
     sock = switch_protocol
     ws   = create_ws(sock)
     start(sock, ws)
