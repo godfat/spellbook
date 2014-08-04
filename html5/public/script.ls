@@ -43,7 +43,7 @@ settings{hexwh, hexhh, hexwo} =
 
 generate = (s, click) ->
   stage = new PIXI.Stage
-  hexes = [0 to s.width * s.height - 1] `prelude.flip(prelude.map)` (idx) ->
+  tiles = [0 to s.width * s.height - 1] `prelude.flip(prelude.map)` (idx) ->
     hex = new PIXI.Sprite s.hexagon
     hex.position.x = s.hexwo * idx `prelude.mod` s.width
     hex.position.y = s.hexh  * idx `prelude.div` s.width -
@@ -56,7 +56,7 @@ generate = (s, click) ->
     hex.click = -> click s, idx
     stage.addChild hex
     hex
-  [stage, hexes]
+  [stage, tiles]
 
 up = (s, idx) -> idx - s.width
 left-up = (s, idx) -> if idx `prelude.mod` 2 == 0
@@ -76,11 +76,11 @@ nearby = (s, idx) -> [left-up(s, idx), up(s, idx), right-up(s, idx),
                       left-down(s, idx), down(s, idx), right-down(s, idx)]
 
 renderer = new PIXI.WebGLRenderer 800, 580
-[stage, hexes] = generate settings, (s, idx) ->
+[stage, tiles] = generate settings, (s, idx) ->
   indices = nearby(s, idx)
   console.log indices
   indices `prelude.flip(prelude.each)` (i) ->
-    hexes[i]?.tint += 0x123456
+    tiles[i]?.tint += 0x123456
 
 document.body.appendChild renderer.view
 
