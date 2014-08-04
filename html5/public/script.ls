@@ -30,13 +30,15 @@ createws = ->
 createws!
 
 renderer = new PIXI.WebGLRenderer 800 580
-width  = 16
-height = 10
-hexw   = 64
-hexh   = 55
-hexwh  = hexw * 0.5
-hexhh  = hexh * 0.5
-hexwo  = hexw * 0.76
+s =
+  width: 16
+  height: 10
+  hexw: 64
+  hexh: 55
+s{hexwh, hexhh, hexwo} =
+  hexwh: s.hexw * 0.5
+  hexhh: s.hexh * 0.5
+  hexwo: s.hexw * 0.76
 
 document.body.appendChild renderer.view
 
@@ -44,20 +46,21 @@ stage = new PIXI.Stage
 
 hexagon = PIXI.Texture.fromImage "hexagon-small-transparent.gif"
 
-gen = prelude.map (idx) ->
-  hex = new PIXI.Sprite hexagon
-  hex.position.x = hexwo * idx `prelude.mod` width
-  hex.position.y = hexh  * idx `prelude.div` width -
-                     if idx `prelude.mod` 2 === 0 then -hexhh else 0
-  txt = new PIXI.Text idx.toString!
-  txt.position.x = hexwh - txt.width  / 2
-  txt.position.y = hexhh - txt.height / 2
-  hex.addChild txt
-  hex.interactive = true
-  hex.click = -> console.log idx
-  stage.addChild hex
+gen = (s, click) ->
+  [0 to s.width * s.height - 1] `prelude.flip(prelude.map)` (idx) ->
+    hex = new PIXI.Sprite hexagon
+    hex.position.x = s.hexwo * idx `prelude.mod` s.width
+    hex.position.y = s.hexh  * idx `prelude.div` s.width -
+                       if idx `prelude.mod` 2 === 0 then -s.hexhh else 0
+    txt = new PIXI.Text idx.toString!
+    txt.position.x = s.hexwh - txt.width  / 2
+    txt.position.y = s.hexhh - txt.height / 2
+    hex.addChild txt
+    hex.interactive = true
+    hex.click = -> click idx
+    stage.addChild hex
 
-map = gen [0 to width * height - 1]
+map = gen s, console.~log
 
 animate = ->
   renderer.render stage
