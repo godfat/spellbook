@@ -7,7 +7,7 @@
 prelude = require 'prelude-ls'
 
 createws = ->
-  ws = new WebSocket "ws://#{location.host}/ws"
+  ws = new WebSocket "ws://#{location.host}#{location.pathname}ws"
 
   send = (msg) ->
     console.log "send: #{msg}"
