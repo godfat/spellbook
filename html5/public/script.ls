@@ -56,8 +56,9 @@ renderer = new PIXI.WebGLRenderer 800, 580
 [stage, tiles] = generate settings, (s, idx) ->
   send "nearby: #{s.width} #{idx}"
 
+ws = undefined
 createws = ->
-  ws = new WebSocket "ws://#{location.host}#{location.pathname}ws"
+  ws := new WebSocket "ws://#{location.host}#{location.pathname}ws"
 
   ws.onopen = ->
     console.log "onopen"
@@ -74,11 +75,11 @@ createws = ->
 
   ws.onclose = ->
     console.log "onclose"
-    createws! # how do we reconnect?
+    ws := createws! # how do we reconnect?
 
   ws
 
-ws = createws!
+createws!
 send = (msg) ->
   console.log "send: #{msg}"
   ws.send msg
