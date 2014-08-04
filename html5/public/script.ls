@@ -35,29 +35,8 @@ generate = (s, click) ->
     hex
   [stage, tiles]
 
-up = (s, idx) -> idx - s.width
-left-up = (s, idx) -> if idx `prelude.mod` 2 == 0
-                      then idx - 1
-                      else up(s, idx) - 1
-right-up = (s, idx) -> if idx `prelude.mod` 2 == 0
-                       then idx + 1
-                       else up(s, idx) + 1
-down = (s, idx) -> idx + s.width
-left-down = (s, idx) -> if idx `prelude.mod` 2 == 0
-                        then down(s, idx) - 1
-                        else idx - 1
-right-down = (s, idx) -> if idx `prelude.mod` 2 == 0
-                         then down(s, idx) + 1
-                         else idx + 1
-nearby = (s, idx) -> [left-up(s, idx), up(s, idx), right-up(s, idx),
-                      left-down(s, idx), down(s, idx), right-down(s, idx)]
-
-renderer = new PIXI.WebGLRenderer 800, 580
-[stage, tiles] = generate settings, (s, idx) ->
-  send "nearby: #{s.width} #{idx}"
-
 ws = undefined
-createws = ->
+connect = (ts) ->
   ws := new WebSocket "ws://#{location.host}#{location.pathname}ws"
 
   ws.onopen = ->
@@ -68,22 +47,27 @@ createws = ->
     indices = prelude.split ' ', msg.data
     console.log indices
     indices `prelude.flip(prelude.each)` (i) ->
-      tiles[parseInt(i)]?.tint += 0x123456
+      ts[parseInt(i)]?.tint += 0x123456
 
   ws.onerror = (e) ->
     console.log "onerror: #{e}"
 
   ws.onclose = ->
     console.log "onclose"
-    ws := createws! # how do we reconnect?
+    ws := connect ts
 
   ws
 
-createws!
 send = (msg) ->
   console.log "send: #{msg}"
   ws.send msg
 
+[stage, tiles] = generate settings, (s, idx) ->
+  send "nearby: #{s.width} #{idx}"
+
+connect tiles
+
+renderer = new PIXI.WebGLRenderer 800, 580
 document.body.appendChild renderer.view
 
 animate = ->
