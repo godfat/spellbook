@@ -28,6 +28,7 @@ Sec-WebSocket-Accept: #{accept}\r
     def create_ws sock
       parser = WebSocket::Parser.new
       parser.on_message do |msg|
+        puts "on_message: #{msg}"
         sock << WebSocket::Message.new(msg).to_data
       end
 

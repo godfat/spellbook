@@ -1,22 +1,26 @@
 
-init = ->
-  connection = new WebSocket("ws://#{location.host}/ws")
+createws = ->
+  ws = new WebSocket "ws://#{location.host}/ws"
 
-  connection.onopen = ->
-    console.log 'onopen'
-    connection.send 'Ping'
+  send = (msg) ->
+    console.log "send: #{msg}"
+    ws.send msg
 
-  connection.onmessage = (msg) ->
+  ws.onopen = ->
+    console.log "onopen"
+    send "Hi"
+
+  ws.onmessage = (msg) ->
     console.log "onmessage: #{msg.data}"
 
-  connection.onerror = (e) ->
+  ws.onerror = (e) ->
     console.log "onerror: #{e}"
 
-  connection.onclose = ->
-    console.log 'onclose'
-    init!
+  ws.onclose = ->
+    console.log "onclose"
+    createws!
 
-init!
+createws!
 
 # You can use either PIXI.WebGLRenderer or PIXI.CanvasRenderer
 renderer = new PIXI.WebGLRenderer 800, 600
