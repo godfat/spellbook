@@ -64,7 +64,7 @@ Sec-WebSocket-Accept: #{accept}\r
     end
   }
 
-  get %r{^/{1,}ws$} do
+  get '/ws' do
     sock = switch_protocol
     ws   = create_ws(sock)
     start(sock, ws)
