@@ -53,6 +53,8 @@ gen = prelude.map (idx) ->
   txt.position.x = hexwh - txt.width  / 2
   txt.position.y = hexhh - txt.height / 2
   hex.addChild txt
+  hex.interactive = true
+  hex.click = -> console.log idx
   stage.addChild hex
 
 map = gen [0 to width * height - 1]
