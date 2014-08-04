@@ -1,0 +1,105 @@
+
+  Strength -> Knight (Strike, Charge)
+    (red) \
+           -> Assassin (Strike/Hide, Assassinate)
+          /
+ Dexterity -> Ranger (Hide, Snipe)
+  (green) \
+           -> Bard (Hide/Spark, Inspire)
+          /
+Perception -> Wizard (Spark, Fireball)
+   (blue) \
+           -> Monk (Spark/Strike, Heal)
+          /
+  Strength
+
+  HP: 5 + Strength*2
+  MP: Perception*3
+PATK: 2 + Strength
+PDEF: 1 + Strength + Dexterity
+MATK: Perception*2
+MDEF: Perception + Dexterity
+Move: 2 + Dexterity
+
+Knight:
+    HP: 9
+    MP: 0
+  PATK: 4
+  PDEF: 3
+  MATK: 0
+  MDEF: 0
+  Move: 2
+
+Ranger:
+    HP: 5
+    MP: 0
+  PATK: 2
+  PDEF: 3
+  MATK: 0
+  MDEF: 2
+  Move: 4
+
+Wizard:
+    HP: 5
+    MP: 6
+  PATK: 2
+  PDEF: 1
+  MATK: 4
+  MDEF: 2
+  Move: 2
+
+Assassin:
+    HP: 7
+    MP: 0
+  PATK: 3
+  PDEF: 3
+  MATK: 0
+  MDEF: 1
+  Move: 3
+
+Bard:
+    HP: 5
+    MP: 3
+  PATK: 2
+  PDEF: 2
+  MATK: 2
+  MDEF: 2
+  Move: 3
+
+Monk:
+    HP: 7
+    MP: 3
+  PATK: 3
+  PDEF: 2
+  MATK: 2
+  MDEF: 1
+  Move: 2
+
+Strike:
+  - PATK+1
+Charge:
+  - PATK+1
+  - Move+2
+Hide:
+  - Invisible until attack/move
+  - PATK+1 (next attack)
+Assassinate:
+  - PATK+1
+  - PATK+2 (if from side)
+  - PATK+3 (if from behind)
+Snipe:
+  - PATK+1 (if from side)
+  - PATK+2 (if from behind)
+  - Range+3
+Spark:
+  - MATK+1
+  - MP-1
+  - Range+2
+Fireball:
+  - MATK+2
+  - MP-2
+  - Range+2
+  - AoE+1
+Heal:
+  - HP+3
+  - MP-1

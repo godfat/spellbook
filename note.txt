@@ -1,0 +1,99 @@
+
+... ability2 (ability1 (ability0 (environment, pos0, pos1)))
+
+ability0 => attacker strength * 2
+ability1 => defender mama split = (mama / 2, mama / 2)
+
+environment => players + game map => blocks, units, etc
+
+ability :: (environment, pos0, pos1) -> (environment, pos0, pos1)
+
+foldr (>>=) (game environment, attacker_pos, defender_pos) abilities
+
+context, pos0, pos1 =
+  foldr (>>=) (foldr (>>=) (...) attacker.abilities) defender.abilities
+
+action = skill (environment, pos0, pos1)
+
+========================================================================
+
+SCALA SCALA SCALA SCALA SCALA SCALA SCALA SCALA SCALA SCALA SCALA SCALA
+
+skill = select from menu
+
+ctx0 = (environment, pos0, pos1)
+ctx1 = foldr id (foldr id ctx0 subject.predicates) target.predicates
+act0 = skill.apply ctx1 # => skill -> fireball
+act1 = foldr id (foldr id act0 subject.abilities) target.abilities
+
+ctx2 = act1.apply ctx0
+
+RUBY RUBY RUBY RUBY RUBY RUBY RUBY RUBY RUBY RUBY RUBY RUBY RUBY RUBY RUBY
+
+class Action < [Effect]
+  def apply ctx0
+    map apply effects
+  end
+end
+
+class Fireball < Skill
+  def apply ctx
+    attacker_magic - defender
+    [Reduce health, Reduce vigor] # finite
+  end
+end
+
+class Fireball2 < Fireball
+  apply :: (environment, pos0, pos1) -> action
+
+  def apply ctx
+    super * 2
+  end
+end
+
+class Evade < Predicate
+  def apply environment, pos0, pos1
+    # rand(2) => [0, 1].size => 2
+    if rand(2) == 0 # 50% # evaded
+      return environment, pos0, nil
+    else # not evade
+      return environment, pos0, pos1
+    end
+  end
+end
+
+class Strengthen < Predicate
+  def apply(environment, pos0, pos1)
+    new_attacker = environment.map[pos0].creature.strength * 2
+    new_environment = environment[pos0].creature = new_attacker
+    return new_environment, pos0, pos1
+  end
+end
+
+class Effect
+class Reduce(Property) < Effect
+class Recover(Property) < Effect
+action = [Effect] + ??
+
+class Enrage < Ability
+  apply :: action -> action
+  def apply action # ==> damage * 2
+    action.effects.map{ |effect|
+      if effect == 'reduce health'
+        effect * 2
+      else
+        effect
+      end
+    }
+  end
+end
+
+class Ghost < Creature
+  def ability
+    [HalfDamage]
+  end
+end
+
+damage = sqrt(strength - defense)
+
+avg(income/life) = ? (IL point)
