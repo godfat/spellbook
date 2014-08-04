@@ -29,42 +29,62 @@ createws = ->
 
 createws!
 
-renderer = new PIXI.WebGLRenderer 800 580
-s =
+settings =
   width: 16
   height: 10
   hexw: 64
   hexh: 55
-s{hexwh, hexhh, hexwo} =
-  hexwh: s.hexw * 0.5
-  hexhh: s.hexh * 0.5
-  hexwo: s.hexw * 0.76
+  hexagon: PIXI.Texture.fromImage "hexagon-small-transparent.gif"
 
-document.body.appendChild renderer.view
+settings{hexwh, hexhh, hexwo} =
+  hexwh: settings.hexw * 0.5
+  hexhh: settings.hexh * 0.5
+  hexwo: settings.hexw * 0.76
 
-stage = new PIXI.Stage
-
-hexagon = PIXI.Texture.fromImage "hexagon-small-transparent.gif"
-
-gen = (s, click) ->
-  [0 to s.width * s.height - 1] `prelude.flip(prelude.map)` (idx) ->
-    hex = new PIXI.Sprite hexagon
+generate = (s, click) ->
+  stage = new PIXI.Stage
+  hexes = [0 to s.width * s.height - 1] `prelude.flip(prelude.map)` (idx) ->
+    hex = new PIXI.Sprite s.hexagon
     hex.position.x = s.hexwo * idx `prelude.mod` s.width
     hex.position.y = s.hexh  * idx `prelude.div` s.width -
-                       if idx `prelude.mod` 2 === 0 then -s.hexhh else 0
+                       if idx `prelude.mod` 2 == 0 then -s.hexhh else 0
     txt = new PIXI.Text idx.toString!
     txt.position.x = s.hexwh - txt.width  / 2
     txt.position.y = s.hexhh - txt.height / 2
     hex.addChild txt
     hex.interactive = true
-    hex.click = -> click idx
+    hex.click = -> click s, idx
     stage.addChild hex
+    hex
+  [stage, hexes]
 
-map = gen s, console.~log
+up = (s, idx) -> idx - s.width
+left-up = (s, idx) -> if idx `prelude.mod` 2 == 0
+                      then idx - 1
+                      else up(s, idx) - 1
+right-up = (s, idx) -> if idx `prelude.mod` 2 == 0
+                       then idx + 1
+                       else up(s, idx) + 1
+down = (s, idx) -> idx + s.width
+left-down = (s, idx) -> if idx `prelude.mod` 2 == 0
+                        then down(s, idx) - 1
+                        else idx - 1
+right-down = (s, idx) -> if idx `prelude.mod` 2 == 0
+                         then down(s, idx) + 1
+                         else idx + 1
+nearby = (s, idx) -> [left-up(s, idx), up(s, idx), right-up(s, idx),
+                      left-down(s, idx), down(s, idx), right-down(s, idx)]
+
+renderer = new PIXI.WebGLRenderer 800, 580
+[stage, hexes] = generate settings, (s, idx) ->
+  indices = nearby(s, idx)
+  indices `prelude.flip(prelude.each)` (i) ->
+    hexes[i].tint += 0x123456
+
+document.body.appendChild renderer.view
 
 animate = ->
   renderer.render stage
   requestAnimationFrame animate
 
-# animate!
-renderer.render stage
+animate!
