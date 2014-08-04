@@ -7,8 +7,7 @@ init = ->
     connection.send 'Ping'
 
   connection.onmessage = (msg) ->
-    console.log "onmessage: #{msg}"
-    console.log "Server: #{msg.data}"
+    console.log "onmessage: #{msg.data}"
 
   connection.onerror = (e) ->
     console.log "onerror: #{e}"
