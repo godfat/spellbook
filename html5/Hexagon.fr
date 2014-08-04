@@ -1,0 +1,41 @@
+
+package spellbook.Hexagon where
+
+up :: Long -> Long -> Long
+up = flip (-)
+
+leftUp :: Long -> Long -> Long
+leftUp width idx =
+  flip (-) 1 (if idx `mod` 2 == 0 then
+                idx
+              else
+                up width idx)
+
+rightUp :: Long -> Long -> Long
+rightUp width idx =
+  (+1) (if idx `mod` 2 == 0 then
+          idx
+        else
+          up width idx)
+
+down :: Long -> Long -> Long
+down = flip (+)
+
+leftDown :: Long -> Long -> Long
+leftDown width idx =
+  flip (-) 1 (if idx `mod` 2 == 0 then
+                down width idx
+              else
+                idx)
+
+rightDown :: Long -> Long -> Long
+rightDown width idx =
+  (+1) (if idx `mod` 2 == 0 then
+          down width idx
+        else
+          idx)
+
+nearby :: Long -> Long -> [Long]
+nearby width idx =
+  map (\f -> f width idx) [leftUp, up, rightUp, rightDown, down, leftDown]
+

@@ -1,15 +1,32 @@
-#!/usr/bin/env rainbows -Ilib -Nc rainbows.rb
+#!/usr/bin/env jruby --2.0 -J-cp /usr/local/Cellar/frege/3.21.500-g88270a0/libexec/frege3.21.500-g88270a0.jar:. -S puma -p 8080
 
 require 'digest/sha1'
 
 require 'jellyfish'
 require 'websocket_parser'
 
+java_import 'spellbook.Hexagon'
+
 class SpellbookServer
   include Jellyfish
   WSGUID = '258EAFA5-E914-47DA-95CA-C5AB0DC85B11'
 
-  controller_include Module.new{
+  jruby_bug = Module.new{
+    def frege2ruby frege
+      case frege
+      when Java::FregePrelude::PreludeBase::TList::DList
+        []
+      when Java::FregePrelude::PreludeBase::TList::DCons
+        frege2ruby(frege.mem2.call).unshift(frege.mem1.call)
+      else # ruby objects
+        frege
+      end
+    end
+
+    def nearby width, idx
+      frege2ruby Java::Spellbook::Hexagon.nearby(width, idx)
+    end
+
     def switch_protocol
       key = env['HTTP_SEC_WEBSOCKET_KEY']
       accept = [Digest::SHA1.digest("#{key}#{WSGUID}")].pack('m').strip
@@ -23,30 +40,6 @@ Sec-WebSocket-Accept: #{accept}\r
 \r
       HTTP
       sock
-    end
-
-    def up width, idx
-      idx - width
-    end
-    def left_up width, idx
-      if idx % 2 == 0 then idx else up(width, idx) end - 1
-    end
-    def right_up width, idx
-      if idx % 2 == 0 then idx else up(width, idx) end + 1
-    end
-    def down width, idx
-      idx + width
-    end
-    def left_down width, idx
-      if idx % 2 == 0 then down(width, idx) else idx end - 1
-    end
-    def right_down width, idx
-      if idx % 2 == 0 then down(width, idx) else idx end + 1
-    end
-    def nearby width, idx
-      %i[left_up up right_up right_down down left_down].map do |direct|
-        send(direct, width, idx)
-      end
     end
 
     def create_ws sock
@@ -92,6 +85,8 @@ Sec-WebSocket-Accept: #{accept}\r
       sock.close
     end
   }
+
+  controller_include jruby_bug
 
   get '/ws' do
     sock = switch_protocol
