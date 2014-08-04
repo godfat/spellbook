@@ -35,11 +35,13 @@ generate = (s, click) ->
     hex
   [stage, tiles]
 
-ws = undefined
+ws = void
+wait = 1000
 connect = (ts) ->
   ws := new WebSocket "ws://#{location.host}#{location.pathname}ws"
 
   ws.onopen = ->
+    wait := 1000
     console.log "onopen"
 
   ws.onmessage = (msg) ->
@@ -50,11 +52,13 @@ connect = (ts) ->
       ts[parseInt(i)]?.tint += 0x123456
 
   ws.onerror = (e) ->
+    wait *=: 2
     console.log "onerror: #{e}"
 
   ws.onclose = ->
-    console.log "onclose"
-    ws := connect ts
+    console.log "onclose, wait: #{wait}"
+    wait `prelude.flip(setTimeout)` ->
+      ws := connect ts
 
   ws
 
