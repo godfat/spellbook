@@ -61,4 +61,5 @@ animate = ->
   renderer.render stage
   requestAnimationFrame animate
 
-animate!
+# animate!
+renderer.render stage
