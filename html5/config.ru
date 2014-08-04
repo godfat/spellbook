@@ -64,21 +64,6 @@ Sec-WebSocket-Accept: #{accept}\r
     end
   }
 
-  handle Jellyfish::NotFound do |e|
-    status 404
-    body   %Q|{"error":{"name":"NotFound"}}\n|
-  end
-
-  handle StandardError do |error|
-    jellyfish.log_error(error, env['rack.errors'])
-
-    name    = error.class.name
-    message = error.message
-
-    status 500
-    body render('error' => {'name' => name, 'message' => message})
-  end
-
   get %r{^/{1,}ws$} do
     sock = switch_protocol
     ws   = create_ws(sock)
