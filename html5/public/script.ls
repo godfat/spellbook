@@ -78,8 +78,9 @@ nearby = (s, idx) -> [left-up(s, idx), up(s, idx), right-up(s, idx),
 renderer = new PIXI.WebGLRenderer 800, 580
 [stage, hexes] = generate settings, (s, idx) ->
   indices = nearby(s, idx)
+  console.log indices
   indices `prelude.flip(prelude.each)` (i) ->
-    hexes[i].tint += 0x123456
+    hexes[i]?.tint += 0x123456
 
 document.body.appendChild renderer.view
 
