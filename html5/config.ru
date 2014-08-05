@@ -12,19 +12,8 @@ class SpellbookServer
   WSGUID = '258EAFA5-E914-47DA-95CA-C5AB0DC85B11'
 
   jruby_bug = Module.new{
-    def frege2ruby frege
-      case frege
-      when Java::FregePrelude::PreludeBase::TList::DList
-        []
-      when Java::FregePrelude::PreludeBase::TList::DCons
-        frege2ruby(frege.mem2.call).unshift(frege.mem1.call)
-      else # ruby objects
-        frege
-      end
-    end
-
     def nearby width, idx
-      frege2ruby Java::Spellbook::Hexagon.nearby(width, idx)
+      Java::Spellbook::Hexagon.nearby(width, idx).to_a
     end
 
     def switch_protocol
