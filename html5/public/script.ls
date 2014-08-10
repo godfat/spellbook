@@ -57,14 +57,18 @@ connect = (ts) ->
 
   ws.onclose = ->
     console.log "onclose, wait: #{wait}"
+    ws := void
     wait `prelude.flip(setTimeout)` ->
       ws := connect ts
 
   ws
 
 send = (msg) ->
-  console.log "send: #{msg}"
-  ws.send msg
+  if ws
+    console.log "send: #{msg}"
+    ws.send msg
+  else
+    console.log "reconnect for: #{msg}"
 
 [stage, tiles] = generate settings, (s, idx) ->
   send "nearby: #{s.width} #{idx}"
