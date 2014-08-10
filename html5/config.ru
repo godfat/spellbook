@@ -1,4 +1,4 @@
-#!/usr/bin/env jruby --2.0 -J-cp /usr/local/Cellar/frege/3.21.500-g88270a0/libexec/frege3.21.500-g88270a0.jar:. -S puma -p 8080
+#!/usr/bin/env jruby --2.0 -J-cp /usr/local/Cellar/frege/3.21.500-g88270a0/libexec/frege3.21.500-g88270a0.jar:. -S puma -e none -p 8080
 
 require 'digest/sha1'
 
