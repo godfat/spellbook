@@ -1,41 +1,44 @@
 
 package spellbook.Hexagon where
 
-up :: Long -> Long -> Long
+type Width = Long
+type Index = Long
+
+up :: Width -> Index -> Index
 up = flip (-)
 
-leftUp :: Long -> Long -> Long
+leftUp :: Width -> Index -> Index
 leftUp width idx =
   flip (-) 1 (if idx `mod` 2 == 0 then
                 idx
               else
                 up width idx)
 
-rightUp :: Long -> Long -> Long
+rightUp :: Width -> Index -> Index
 rightUp width idx =
   (+1) (if idx `mod` 2 == 0 then
           idx
         else
           up width idx)
 
-down :: Long -> Long -> Long
+down :: Width -> Index -> Index
 down = flip (+)
 
-leftDown :: Long -> Long -> Long
+leftDown :: Width -> Index -> Index
 leftDown width idx =
   flip (-) 1 (if idx `mod` 2 == 0 then
                 down width idx
               else
                 idx)
 
-rightDown :: Long -> Long -> Long
+rightDown :: Width -> Index -> Index
 rightDown width idx =
   (+1) (if idx `mod` 2 == 0 then
           down width idx
         else
           idx)
 
-nearby_ :: Long -> Long -> [Long]
+nearby_ :: Width -> Index -> [Index]
 nearby_ width idx =
   map (\f -> f width idx) [leftUp, up, rightUp, rightDown, down, leftDown]
 
