@@ -19,8 +19,8 @@ rightDown = (succ .) . (ifmod2 down 1)
 down      = (+)
 leftDown  = (pred .) . (ifmod2 down 1)
 
-nearby_ :: Index -> Width -> [Index]
-nearby_ idx width =
+nearby' :: Index -> Width -> [Index]
+nearby' idx width =
   [leftUp, up, rightUp, rightDown, down, leftDown] <*> [idx] <*> [width]
 
-nearby idx = arrayFromList . (nearby_ idx)
+nearby idx = arrayFromList . (nearby' idx)
