@@ -1,6 +1,7 @@
 
 package spellbook.Hexagon where
 
+-- no newtype in frege?
 type Width = Long
 type Index = Long
 
