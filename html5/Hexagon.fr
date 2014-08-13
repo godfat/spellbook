@@ -21,6 +21,6 @@ leftDown  = (pred .) . (ifmod2 down 1)
 
 nearby_ :: Index -> Width -> [Index]
 nearby_ idx width =
-  map (\f -> f idx width) [leftUp, up, rightUp, rightDown, down, leftDown]
+  [leftUp, up, rightUp, rightDown, down, leftDown] <*> [idx] <*> [width]
 
 nearby idx = arrayFromList . (nearby_ idx)
