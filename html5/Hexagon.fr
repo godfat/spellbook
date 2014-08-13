@@ -38,8 +38,8 @@ rightDown idx width =
    else
      idx) + 1
 
-nearby_ :: Width -> Index -> [Index]
+nearby_ :: Index -> Width -> [Index]
 nearby_ idx width =
   map (\f -> f idx width) [leftUp, up, rightUp, rightDown, down, leftDown]
 
-nearby width = arrayFromList . (nearby_ width)
+nearby idx = arrayFromList . (nearby_ idx)
