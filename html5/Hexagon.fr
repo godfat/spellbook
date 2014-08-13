@@ -4,39 +4,20 @@ package spellbook.Hexagon where
 type Width = Long
 type Index = Long
 
-up :: Index -> Width -> Index
-up = (-)
+ifmod2 :: (Index -> Width -> Index) -> Long -> Index -> Width -> Index
+ifmod2 f reminder idx width =
+  if idx `mod` 2 == reminder then
+    idx
+  else
+    f idx width
 
-leftUp :: Index -> Width -> Index
-leftUp idx width =
-  (if idx `mod` 2 == 0 then
-     idx
-   else
-     up idx width) - 1
-
-rightUp :: Index -> Width -> Index
-rightUp idx width =
-  (if idx `mod` 2 == 0 then
-     idx
-   else
-     up idx width) + 1
-
-down :: Index -> Width -> Index
-down = (+)
-
-leftDown :: Index -> Width -> Index
-leftDown idx width =
-  (if idx `mod` 2 == 0 then
-     down idx width
-   else
-     idx) - 1
-
-rightDown :: Index -> Width -> Index
-rightDown idx width =
-  (if idx `mod` 2 == 0 then
-     down idx width
-   else
-     idx) + 1
+leftUp, up, rightUp, rightDown, down, leftDown :: Index -> Width -> Index
+leftUp    = (pred .) . (ifmod2 up   0)
+up        = (-)
+rightUp   = (succ .) . (ifmod2 up   0)
+rightDown = (succ .) . (ifmod2 down 1)
+down      = (+)
+leftDown  = (pred .) . (ifmod2 down 1)
 
 nearby_ :: Index -> Width -> [Index]
 nearby_ idx width =
