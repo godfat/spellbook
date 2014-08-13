@@ -4,42 +4,42 @@ package spellbook.Hexagon where
 type Width = Long
 type Index = Long
 
-up :: Width -> Index -> Index
-up = flip (-)
+up :: Index -> Width -> Index
+up = (-)
 
-leftUp :: Width -> Index -> Index
-leftUp width idx =
-  flip (-) 1 (if idx `mod` 2 == 0 then
-                idx
-              else
-                up width idx)
+leftUp :: Index -> Width -> Index
+leftUp idx width =
+  (if idx `mod` 2 == 0 then
+     idx
+   else
+     up idx width) - 1
 
-rightUp :: Width -> Index -> Index
-rightUp width idx =
-  (+1) (if idx `mod` 2 == 0 then
-          idx
-        else
-          up width idx)
+rightUp :: Index -> Width -> Index
+rightUp idx width =
+  (if idx `mod` 2 == 0 then
+     idx
+   else
+     up idx width) + 1
 
-down :: Width -> Index -> Index
-down = flip (+)
+down :: Index -> Width -> Index
+down = (+)
 
-leftDown :: Width -> Index -> Index
-leftDown width idx =
-  flip (-) 1 (if idx `mod` 2 == 0 then
-                down width idx
-              else
-                idx)
+leftDown :: Index -> Width -> Index
+leftDown idx width =
+  (if idx `mod` 2 == 0 then
+     down idx width
+   else
+     idx) - 1
 
-rightDown :: Width -> Index -> Index
-rightDown width idx =
-  (+1) (if idx `mod` 2 == 0 then
-          down width idx
-        else
-          idx)
+rightDown :: Index -> Width -> Index
+rightDown idx width =
+  (if idx `mod` 2 == 0 then
+     down idx width
+   else
+     idx) + 1
 
 nearby_ :: Width -> Index -> [Index]
-nearby_ width idx =
-  map (\f -> f width idx) [leftUp, up, rightUp, rightDown, down, leftDown]
+nearby_ idx width =
+  map (\f -> f idx width) [leftUp, up, rightUp, rightDown, down, leftDown]
 
 nearby width = arrayFromList . (nearby_ width)

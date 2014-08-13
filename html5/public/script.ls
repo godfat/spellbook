@@ -71,7 +71,7 @@ send = (msg) ->
     console.log "reconnect for: #{msg}"
 
 [stage, tiles] = generate settings, (s, idx) ->
-  send "nearby: #{s.width} #{idx}"
+  send "nearby: #{idx} #{s.width}"
 
 connect tiles
 
