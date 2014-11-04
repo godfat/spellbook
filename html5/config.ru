@@ -15,72 +15,32 @@ class SpellbookServer
     def nearby width, idx
       Java::Spellbook::Hexagon.nearby(width, idx).to_a
     end
-
-    def switch_protocol
-      key = env['HTTP_SEC_WEBSOCKET_KEY']
-      accept = [Digest::SHA1.digest("#{key}#{WSGUID}")].pack('m').strip
-      sock = env['rack.hijack'].call
-      sock.binmode
-      sock.write(<<-HTTP)
-HTTP/1.1 101 Switching Protocols\r
-Upgrade: websocket\r
-Connection: Upgrade\r
-Sec-WebSocket-Accept: #{accept}\r
-\r
-      HTTP
-      sock
-    end
-
-    def create_ws sock
-      parser = WebSocket::Parser.new
-      parser.on_message do |msg|
-        puts "on_message: #{msg}"
-        write(sock, nearby(*msg.scan(/\d+/).map(&:to_i)).join(' '))
-      end
-
-      parser.on_error do |e|
-        puts "on_error: #{e}"
-        sock.close
-      end
-
-      parser.on_close do |status, message|
-        puts "on_close: #{status}, #{message}"
-        close(sock)
-      end
-
-      parser.on_ping do |ping|
-        puts "on_ping: #{ping}"
-        sock << WebSocket::Message.pong(ping).to_data
-      end
-
-      parser
-    end
-
-    def write sock, msg
-      puts "write: #{msg}"
-      sock << WebSocket::Message.new(msg).to_data
-    end
-
-    def start sock, ws
-      Thread.new do
-        while !sock.closed? && IO.select([sock]) do
-          ws << sock.readpartial(8192)
-        end
-      end
-    end
-
-    def close sock
-      sock << WebSocket::Message.close.to_data
-      sock.close
-    end
   }
 
-  controller_include jruby_bug
+  controller_include jruby_bug, Jellyfish::WebSocket
 
   get '/ws' do
-    sock = switch_protocol
-    ws   = create_ws(sock)
-    start(sock, ws)
+    switch_protocol do |msg|
+      puts "on_message: #{msg}"
+      ws_write(nearby(*msg.scan(/\d+/).map(&:to_i)).join(' '))
+    end
+
+    parser.on_error do |e|
+      puts "on_error: #{e}"
+      sock.close
+    end
+
+    parser.on_close do |status, message|
+      puts "on_close: #{status}, #{message}"
+      ws_close
+    end
+
+    parser.on_ping do |ping|
+      puts "on_ping: #{ping}"
+      sock << WebSocket::Message.pong(ping).to_data
+    end
+
+    Thread.new{ ws_start }
     ''
   end
 end
