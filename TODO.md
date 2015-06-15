@@ -1,6 +1,15 @@
 
 # spellbook TODO list
 
+## reference
+
+- Vantage Master (Japan) (Windows)
+- Magic: The Gathering (TCG)
+- Estiah (Web)
+- Infinity Wars (Windows)
+- War of Omens (Flash)
+- Dungeon Clash (Mobile)
+
 ## flow
 
 0. upkeep phase
